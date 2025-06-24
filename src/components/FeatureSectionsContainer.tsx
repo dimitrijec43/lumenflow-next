@@ -39,12 +39,12 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
       {/* Increased top spacer */}
       <div className="h-[75vh]" />
       
-      <div 
+      <div
         ref={containerRef}
         className="relative perspective-1000"
         style={{ height: scrollDistance }}
       >
-        {/* Fixed container for horizontal scroll */}
+        {/* Fixed container for vertical scroll */}
         <motion.div
           className="fixed top-0 left-0 w-full h-screen flex items-center pointer-events-none"
           style={{
@@ -53,26 +53,26 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
         >
           {/* Background gradient effect */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 opacity-10"
+            className="absolute inset-0 bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 opacity-10"
             style={{
               opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.2, 0])
             }}
           />
 
-          {/* Progress bar - Moved higher up */}
+          {/* Progress bar - On the left side */}
           <motion.div
-            className="absolute top-[40px] sm:top-[60px] md:top-[80px] left-0 h-1 bg-gradient-to-r from-google-blue via-google-red to-google-yellow z-50"
+            className="absolute left-[40px] sm:left-[60px] md:left-[80px] top-0 w-1 h-full bg-gradient-to-b from-google-blue via-google-red to-google-yellow z-50"
             style={{
-              width: useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]),
+              scaleY: useTransform(scrollYProgress, [0.1, 0.9], [0, 1]),
               opacity: useTransform(scrollYProgress, [0.05, 0.1, 0.9, 0.95], [0, 1, 1, 0])
             }}
           />
 
-          {/* Horizontal scroll container - Adjusted positioning */}
+          {/* Vertical scroll container */}
           <motion.div
-            className="absolute inset-0 flex items-center overflow-visible pt-16 sm:pt-12 md:pt-0"
+            className="absolute inset-0 flex flex-col items-center justify-start overflow-visible px-4 sm:px-6 md:px-8 pt-16 sm:pt-12 md:pt-0"
             style={{
-              x: useTransform(
+              y: useTransform(
                 scrollYProgress,
                 [0.1, 0.9],
                 ["0%", `-${(totalSections - 1) * 100}%`]
@@ -94,7 +94,7 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
               return (
                 <motion.div
                   key={index}
-                  className="w-screen flex-shrink-0 px-4 sm:px-6 md:px-8"
+                  className="h-screen w-full flex-shrink-0 flex items-center justify-center"
                   style={{
                     opacity: sectionProgress,
                     scale: useTransform(sectionProgress, [0, 1], [0.8, 1]),
@@ -105,7 +105,7 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
                     )
                   }}
                 >
-                  <div className="max-w-6xl mx-auto">
+                  <div className="max-w-6xl mx-auto w-full">
                     <FeatureSection {...feature} />
                   </div>
                 </motion.div>
@@ -113,9 +113,9 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
             })}
           </motion.div>
 
-          {/* Progress indicators - Adjusted positioning */}
-          <motion.div 
-            className="fixed bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3 md:space-x-4 z-50"
+          {/* Progress indicators - On the right side */}
+          <motion.div
+            className="fixed right-4 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 flex flex-col space-y-2 sm:space-y-3 md:space-y-4 z-50"
             style={{
               opacity: useTransform(scrollYProgress, [0.05, 0.1, 0.9, 0.95], [0, 1, 1, 0])
             }}
@@ -141,7 +141,7 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
                   }}
                 >
                   <motion.span
-                    className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white/10 text-white text-[10px] sm:text-xs py-1 px-2 rounded opacity-0 transition-opacity duration-200 whitespace-nowrap backdrop-blur-sm"
+                    className="absolute -left-8 top-1/2 -translate-y-1/2 bg-white/10 text-white text-[10px] sm:text-xs py-1 px-2 rounded opacity-0 transition-opacity duration-200 whitespace-nowrap backdrop-blur-sm"
                     style={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                   >

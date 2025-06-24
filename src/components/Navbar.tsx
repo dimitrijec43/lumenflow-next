@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import React, { useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/assets/logo.png';
@@ -13,6 +13,8 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRinging, setIsRinging] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const { scrollY } = useScroll();
   const navBackground = useTransform(
     scrollY,
@@ -25,6 +27,31 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
     [0, 0.1]
   );
 
+  // Handle click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        menuRef.current && 
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current && 
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   // Bell icon SVG path
   const bellPath = "M20 17h1a1 1 0 0 1 .117 1.993L21 19H3a1 1 0 0 1-.117-1.993L3 17h1v-6c0-4.418 3.582-8 8-8s8 3.582 8 8v6zm-8 4a2 2 0 0 1-1.995-1.85L10 19h4a2 2 0 0 1-2 2zm-7-4h14v-6c0-3.866-3.134-7-7-7s-7 3.134-7 7v6z";
 
@@ -32,6 +59,55 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
     setIsRinging(true);
     setTimeout(() => setIsRinging(false), 1000);
     onNotifyClick();
+  };
+
+  // Menu animation variants
+  const menuVariants = {
+    hidden: {
+      opacity: 0,
+      y: -20,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  // Menu item animation variants
+  const menuItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.2,
+        ease: "easeOut"
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      x: -10,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    }
   };
 
   return (
@@ -51,7 +127,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
             transition={{ duration: 0.5 }}
             className="flex items-center space-x-2"
           >
-            <div className="relative w-10 h-10">
+            <Link href="/" className="relative w-10 h-10 hover:opacity-80 transition-opacity">
               <Image
                 src={logo}
                 alt="LumenFlow"
@@ -59,11 +135,10 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
                 className="object-contain"
                 priority
               />
-            </div>
-            {/* <span className="text-xl font-bold text-gradient-multi">LumenFlow</span> */}
+            </Link>
           </motion.div>
 
-          {/* Navigation Links */}
+          {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center space-x-8">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -77,26 +152,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
                 Why we made LumenFlow?
               </Link>
             </motion.div>
-            {/* <motion.a
-              href="#pricing"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-neutral-300 hover:text-white transition-colors"
-            >
-              Pricing
-            </motion.a>
-            <motion.a
-              href="#about"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-neutral-300 hover:text-white transition-colors"
-            >
-              About
-            </motion.a> */}
 
-            {/* Bell Icon */}
+            {/* Bell Icon - Desktop */}
             <motion.div
               className="relative"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -127,7 +184,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
                   } : {}}
                 >
                   <path d={bellPath} />
-                  {/* Bell clapper */}
                   <motion.path
                     d="M12 4 L12 2"
                     animate={isRinging ? {
@@ -149,7 +205,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
                 )}
               </motion.button>
 
-              {/* Notification dot */}
               <motion.div
                 className="absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full"
                 initial={{ scale: 0 }}
@@ -159,7 +214,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
             </motion.div>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button and bell */}
           <div className="md:hidden flex items-center space-x-4">
             {/* Bell Icon for mobile */}
             <motion.div
@@ -212,7 +267,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
             </motion.div>
 
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              ref={buttonRef}
+              onClick={toggleMenu}
               className="text-neutral-100 p-2"
             >
               <svg
@@ -242,22 +298,31 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
         </div>
 
         {/* Mobile menu */}
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-4"
-          >
-            <Link
-              href="/why"
-              className="block py-2 text-neutral-300 hover:text-white"
-              onClick={() => setIsMenuOpen(false)}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              ref={menuRef}
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="md:hidden py-4 px-6 bg-neutral-800/20 backdrop-blur-sm rounded-lg mt-2"
             >
-              Why we made LumenFlow?
-            </Link>
-          </motion.div>
-        )}
+              <motion.div
+                variants={menuItemVariants}
+                className="border-l-2 border-neutral-700 pl-4"
+              >
+                <Link
+                  href="/why"
+                  className="block py-3 text-neutral-300 hover:text-white transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Why we made LumenFlow?
+                </Link>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );
