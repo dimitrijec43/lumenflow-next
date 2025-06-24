@@ -82,7 +82,7 @@ const NotifyModal: React.FC<NotifyModalProps> = ({ isOpen, onClose }) => {
                   className="w-16 h-16 bg-blue-500/10 rounded-full mx-auto mb-4 flex items-center justify-center"
                 >
                   <svg
-                    className="w-8 h-8 text-blue-500"
+                    className="w-8 h-8 text-yellow-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

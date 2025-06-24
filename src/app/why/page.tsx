@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import DrawingAnimation from '@/components/DrawingAnimation';
 import NotifyModal from '@/components/NotifyModal';
+import Image from 'next/image';
+import logo from '@/assets/logo.png';
 import { useState } from 'react';
 
 // Animation variants
@@ -114,7 +116,7 @@ export default function WhyPage() {
                 animate={{ width: "8rem", opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
               />
-              <h1 className="text-5xl md:text-6xl font-bold pb-2 mt-5 mb-2 text-gradient-multi relative inline-block">
+              <h1 className="text-5xl md:text-6xl font-bold mt-5 pt-5 text-gradient-multi relative inline-block">
                 Why We Made LumenFlow
                 {/* <motion.div
                   className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"
@@ -123,14 +125,14 @@ export default function WhyPage() {
                   transition={{ duration: 1, delay: 0.8 }}
                 /> */}
               </h1>
-              <p className="text-xl md:text-2xl text-yellow-200 mt-6 relative pb-2">
-                A journey from complexity to simplicity.
-                <motion.span
-                  className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-[10px] bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 rounded-full"
+              <p className="text-xl md:text-2xl text-yellow-200 mt-3 relative pb-3">
+                A journey from complexity to <span className='py-3' style={{  borderRadius: "0.5rem", fontWeight: "bold", fontSize: "1.56rem"}}>simplicity</span>.
+                {/* <motion.span
+                  className="absolute -bottom-2 right-1/5 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 rounded-full"
                   initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: "6rem", opacity: 1 }}
+                  animate={{ width: "2rem", opacity: 1 }}
                   transition={{ duration: 1, delay: 1 }}
-                />
+                /> */}
               </p>
             </motion.div>
 
@@ -322,15 +324,74 @@ export default function WhyPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
               />
-              <div className="max-w-3xl mx-auto px-6">
+              <div className="max-w-3xl mx-auto px-6 mb-10">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gradient-multi">Our Vision</h2>
                 <p className="text-neutral-300 leading-relaxed text-lg">
                   Our goal was to create the app we always wished we had: an intuitive, easy-to-navigate solution that empowers you to achieve more, stress less, and truly reclaim your focus. It's about giving you precisely what you need, nothing more, nothing less.
                 </p>
               </div>
+
+              <div className="container-special">
+                    <a href="#" className="button-special type--C" onClick={(e) => {
+                      e.preventDefault();
+                      setIsModalOpen(true);
+                    }}>
+                      <div className="button__line"></div>
+                      <div className="button__line"></div>
+                      <div className="button__text">
+                        <motion.div
+                          className="relative mr-2"
+                          initial={{ rotate: 0 }}
+                          animate={{
+                            rotate: [0, -10, 10, -10, 10, -5, 5, 0]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatDelay: 3,
+                            ease: "easeInOut"
+                          }}
+                        >
+                          <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <motion.path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                              initial={{ pathLength: 0 }}
+                              animate={{ pathLength: 1 }}
+                              transition={{
+                                duration: 1.5,
+                                ease: "easeInOut"
+                              }}
+                            />
+                          </svg>
+                        </motion.div>
+                        NOTIFY ME
+                      </div>
+                      <div className="button__drow1"></div>
+                      <div className="button__drow2"></div>
+                    </a>
+                  </div>
             </motion.div>
           </motion.div>
         </div>
+
+        <footer className="rounded-full shadow-sm m-4 mt-20  border border-neutral-700/30">
+              <div className="w-full mx-auto max-w-screen-xl p-4 flex items-center justify-between">
+                <span className="text-[12px] sm:text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">LumenFlow™</a>. All Rights Reserved.</span>
+                <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                  <li>
+                    <Image src={logo} alt="LumenFlow Logo" className="w-10 h-10" />
+                  </li>
+                </ul>
+              </div>
+            </footer>
       </main>
       <NotifyModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>

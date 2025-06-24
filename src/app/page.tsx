@@ -716,7 +716,7 @@ export default function Home() {
               </motion.div>
             </div>
             <div style={{ height: '100px' }}></div>
-            <footer className="rounded-lg shadow-sm m-4 mt-20 bg-neutral-700/30">
+            <footer className="rounded-full shadow-sm m-4 mt-20  border border-neutral-700/30">
               <div className="w-full mx-auto max-w-screen-xl p-4 flex items-center justify-between">
                 <span className="text-[12px] sm:text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">LumenFlow™</a>. All Rights Reserved.</span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
