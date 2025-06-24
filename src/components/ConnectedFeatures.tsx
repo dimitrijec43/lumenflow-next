@@ -46,7 +46,7 @@ const ConnectedFeatures = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, margin: "-100px" }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-16"
             >
               How It All Connects
@@ -71,7 +71,7 @@ const ConnectedFeatures = () => {
                     viewport={{ once: false, margin: "-100px" }}
                     variants={{
                       hidden: { opacity: 0 },
-                      visible: { opacity: 1, transition: { duration: 0.35, staggerChildren: 0.3 } }
+                      visible: { opacity: 1, transition: { duration: 0.2, staggerChildren: 0.3 } }
                     }}
                   >
                     {/* Left side content */}
@@ -103,7 +103,7 @@ const ConnectedFeatures = () => {
                               visible: { 
                                 opacity: 1, 
                                 y: 0,
-                                transition: { duration: 0.35, delay: 0.2 }
+                                transition: { duration: 0.2, delay: 0.1 }
                               }
                             }}
                           >
@@ -116,7 +116,7 @@ const ConnectedFeatures = () => {
                               visible: { 
                                 opacity: 1, 
                                 y: 0,
-                                transition: { duration: 0.35, delay: 0.3 }
+                                transition: { duration: 0.32, delay: 0.1 }
                               }
                             }}
                           >
@@ -160,7 +160,7 @@ const ConnectedFeatures = () => {
                           opacity: [0.5, 1, 0.5]
                         }}
                         transition={{
-                          duration: 3,
+                          duration: 1.5,
                           repeat: Infinity,
                           ease: "easeInOut"
                         }}
@@ -181,7 +181,7 @@ const ConnectedFeatures = () => {
                           x: 0,
                           y: 0,
                           transition: {
-                            duration: 1.2,
+                            duration: 0.35,
                             ease: "easeOut"
                           }
                         }
@@ -196,7 +196,7 @@ const ConnectedFeatures = () => {
                               visible: { 
                                 opacity: 1, 
                                 y: 0,
-                                transition: { duration: 1, delay: 0.2 }
+                                transition: { duration: 0.2, delay: 0 }
                               }
                             }}
                           >
@@ -209,7 +209,7 @@ const ConnectedFeatures = () => {
                               visible: { 
                                 opacity: 1, 
                                 y: 0,
-                                transition: { duration: 1, delay: 0.3 }
+                                transition: { duration: 0.2, delay: 0 }
                               }
                             }}
                           >

@@ -30,14 +30,14 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
   // Main container visibility
   const containerVisibility = useTransform(
     scrollYProgress,
-    [0, 0.1, 0.85, 1],
+    [0, 0.1, 0.9, 1],
     [0, 1, 1, 0]
   );
 
   return (
     <div className="relative bg-neutral-900 z-40">
       {/* Increased top spacer */}
-      <div className="h-[75vh]" />
+      <div className="h-[65vh]" />
       
       <div
         ref={containerRef}
@@ -83,10 +83,10 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
               const sectionProgress = useTransform(
                 scrollYProgress,
                 [
-                  (index - 0.5) / totalSections + 0.1,
-                  index / totalSections + 0.1,
-                  (index + 1) / totalSections + 0.1,
-                  (index + 1.5) / totalSections + 0.1
+                  (index - 0.5) / totalSections,
+                  index / totalSections,
+                  (index + 1) / totalSections,
+                  (index + 1.5) / totalSections
                 ],
                 [0, 1, 1, 0]
               );
@@ -155,7 +155,7 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
       </div>
 
       {/* Increased bottom spacer */}
-      <div className="h-[75vh]" />
+      <div className="h-[45vh]" />
     </div>
   );
 };
