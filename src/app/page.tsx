@@ -146,34 +146,34 @@ export default function Home() {
           />
 
           <div className="container mx-auto px-4 h-screen flex items-center justify-center">
-            <div className="grid md:grid-cols-2 gap-12 items-center pt-20 sm:pt-16 md:pt-0">
+            <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center pt-16 xs:pt-20 sm:pt-16 md:pt-0">
               {/* Left content */}
               <motion.div
-                className="text-center md:text-left pointer-events-auto mt-8 sm:mt-12 md:mt-0"
+                className="text-center md:text-left pointer-events-auto mt-4 xs:mt-8 sm:mt-12 md:mt-0"
               >
                 <motion.h1
-                  className="text-3xl sm:text-4xl lg:text-7xl font-bold pb-2 mb-6 text-gradient-multi max-w-[300px] sm:max-w-none mx-auto"
+                  className="text-2xl xs:text-3xl sm:text-4xl lg:text-7xl font-bold pb-2 mb-4 sm:mb-6 text-gradient-multi max-w-[280px] xs:max-w-[300px] sm:max-w-none mx-auto"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
                 >
                   Manage Flow,
-                  <br />
-                  Simplified
+                  <br className="hidden xs:block sm:hidden" />
+                  <span className="inline-block mt-1 xs:mt-0"> Simplified</span>
                 </motion.h1>
 
                 <motion.p
-                  className="text-base sm:text-lg md:text-xl text-neutral-200 mb-8 max-w-[280px] sm:max-w-none mx-auto"
+                  className="text-sm xs:text-base sm:text-lg md:text-xl text-neutral-200 mb-4 sm:mb-8 max-w-[260px] xs:max-w-[280px] sm:max-w-none mx-auto"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   Simply customize how you organize and manage your focus and productivity. 
-                  <span className="text-white block sm:inline mt-2 sm:mt-0" style={{ fontSize: '1.1rem', fontWeight: 'bold' }}> Achieve more, stress less.</span>
+                  <span className="text-white block mt-1 sm:inline sm:mt-0" style={{ fontSize: 'clamp(0.875rem, 2vw, 1.1rem)', fontWeight: 'bold' }}> Achieve more, stress less.</span>
                 </motion.p>
 
                 <motion.div
-                  className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pointer-events-auto scale-90 sm:scale-100"
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start pointer-events-auto scale-90 sm:scale-100"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
@@ -231,9 +231,9 @@ export default function Home() {
                 </motion.div>
               </motion.div>
 
-              {/* Right content - Placeholder Card */}
+              {/* Right content - App Preview Cards */}
               <motion.div
-                className="relative pointer-events-auto mt-4 md:mt-0"
+                className="relative pointer-events-auto -mt-4 xs:mt-0 md:mt-0 scale-75 xs:scale-90 sm:scale-100"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -242,14 +242,14 @@ export default function Home() {
                 <div className="relative text-center">
                   <div className="material-card material-card-main w-full max-w-lg mx-auto rounded-3xl flex items-center justify-center" 
                     style={{ 
-                      height: 'min(50vh, 600px)',
+                      height: 'min(45vh, 600px)',
                       backgroundColor: 'rgba(255, 255, 255, 0.0)', 
                       backdropFilter: 'none', 
                       border: 'none', 
                       boxShadow: 'none' 
                     }}
                   >
-                    <Image src={appPreview} alt="App Preview" className="h-full w-full object-contain scale-75 sm:scale-90 md:scale-100" />
+                    <Image src={appPreview} alt="App Preview" className="h-full w-full object-contain" />
                   </div>
 
                   {/* Top floating card - Sound Library */}
@@ -650,12 +650,12 @@ export default function Home() {
                 viewport={{ once: false }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-5xl font-bold mb-8 text-gradient-multi">
+                <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 text-gradient-multi">
                   Ready to Simplify Your Workflow?
                 </h2>
-                <p className="text-xl text-neutral-200 mb-12">
+                <p className="text-base xs:text-lg sm:text-xl text-neutral-200 mb-8 sm:mb-12 max-w-[300px] xs:max-w-[400px] sm:max-w-none mx-auto" style={{ fontSize: 'clamp(0.92rem, 2vw, 1.2rem)' }}>
                   Join thousands of people who have already discovered LumenFlow.
-                  Be amongst the first to know when we launch & get some special perks as a <span className="text-white" style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'rgb(243, 255, 70)' }}>thank you for your support.</span>
+                  Be amongst the first to know when we launch & get some special perks as a <span className="text-white inline-block mt-1 sm:mt-0" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.35rem)', fontWeight: 'bold', color: 'rgb(243, 255, 70)' }}>thank you for your support.</span>
                 </p>
                 <motion.div
                   className="flex flex-col sm:flex-row gap-4 justify-center md:justify-center pointer-events-auto"

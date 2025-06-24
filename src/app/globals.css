@@ -365,6 +365,7 @@ img {
   transition: all 0.5s ease;
   background-color: #f9fc47;
 }
+
 .button__text {
   display: flex;
   justify-content: center;
@@ -375,6 +376,23 @@ img {
   /* font-family: 'Poppins', sans-serif; */
   font-weight: bold;
   gap: 8px;
+}
+
+@media (max-width: 767px) {
+  .button-special {
+    width: 110;
+    height: 44px;
+    border-radius: 26px;
+    margin-bottom: 25px;
+    font-size: clamp(12px, 2vw, 15px);
+  }
+}
+
+@media (max-width: 320px) {
+  .button-special {
+    width: 80%;
+    min-width: 130px;
+  }
 }
 
 .button__text svg {
