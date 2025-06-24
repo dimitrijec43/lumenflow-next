@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring, color } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import DrawingAnimation from '@/components/DrawingAnimation';
@@ -152,7 +152,7 @@ export default function Home() {
                 className="text-center md:text-left pointer-events-auto mt-4 xs:mt-8 sm:mt-12 md:mt-0"
               >
                 <motion.h1
-                  className="text-2xl xs:text-3xl sm:text-4xl lg:text-7xl font-bold pb-2 mb-4 sm:mb-6 text-gradient-multi max-w-[280px] xs:max-w-[300px] sm:max-w-none mx-auto"
+                  className="text-3xl xs:text-4xl sm:text-5xl lg:text-7xl font-bold pb-2 mb-4 sm:mb-6 text-gradient-multi max-w-[280px] xs:max-w-[300px] sm:max-w-none mx-auto"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
@@ -163,13 +163,15 @@ export default function Home() {
                 </motion.h1>
 
                 <motion.p
-                  className="text-sm xs:text-base sm:text-lg md:text-xl text-neutral-200 mb-4 sm:mb-8 max-w-[260px] xs:max-w-[280px] sm:max-w-none mx-auto"
+                  className="text-sm xs:text-base sm:text-lg md:text-xl text-neutral-200 mb-4 sm:mb-8 max-w-[260px] xs:max-w-[280px] sm:max-w-none mx-auto md:pr-5"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  Simply customize how you organize and manage your focus and productivity. 
-                  <span className="text-white block mt-1 sm:inline sm:mt-0" style={{ fontSize: 'clamp(0.875rem, 2vw, 1.1rem)', fontWeight: 'bold' }}> Achieve more, stress less.</span>
+                  <span className="dissapear-text">LumenFlow is designed to cut through the noise. </span>
+                  {/* <span className="text-white block mt-1 sm:inline sm:mt-0" style={{ fontSize: 'clamp(0.875rem, 2vw, 1.1rem)', fontWeight: 'bold' }}> Achieve more, stress less.</span> */}
+                  <span className="text-white block mt-1 sm:inline sm:mt-0" style={{ fontSize: 'clamp(0.975rem, 2vw, 1.1rem)', fontWeight: 'bold' }}> Clarity Over Complexity: Your Focus,<span style={{ color: 'rgb(243, 255, 70)' }}> Elevated.</span></span>
+                  
                 </motion.p>
 
                 <motion.div

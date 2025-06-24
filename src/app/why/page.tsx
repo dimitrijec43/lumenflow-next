@@ -83,9 +83,9 @@ export default function WhyPage() {
           className="absolute inset-0"
           animate={{
             background: [
-              'radial-gradient(circle at 30% 20%, rgba(66, 133, 244, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(234, 67, 53, 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 70% 20%, rgba(251, 188, 5, 0.15) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(52, 168, 83, 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 50%, rgba(66, 133, 244, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(234, 67, 53, 0.1) 0%, transparent 50%)',
+              'radial-gradient(circle at 30% 20%, rgba(66, 133, 244, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(234, 231, 53, 0.1) 0%, transparent 50%)',
+              'radial-gradient(circle at 70% 20%, rgba(5, 202, 251, 0.15) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(52, 168, 83, 0.1) 0%, transparent 50%)',
+              'radial-gradient(circle at 50% 50%, rgba(66, 133, 244, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(222, 234, 53, 0.1) 0%, transparent 50%)',
             ]
           }}
           transition={{
@@ -126,7 +126,7 @@ export default function WhyPage() {
               <p className="text-xl md:text-2xl text-yellow-200 mt-6 relative pb-2">
                 A journey from complexity to simplicity.
                 <motion.span
-                  className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-[10px] bg-gradient-to-r from-blue-500 via-yellow-200 to-blue-500 rounded-full"
+                  className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-[10px] bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 rounded-full"
                   initial={{ width: 0, opacity: 0 }}
                   animate={{ width: "6rem", opacity: 1 }}
                   transition={{ duration: 1, delay: 1 }}
