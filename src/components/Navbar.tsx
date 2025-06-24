@@ -91,28 +91,18 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
 
   // Menu item animation variants
   const menuItemVariants = {
-    hidden: { opacity: 0, x: -20, filter: 'blur(10px)' },
+    hidden: { opacity: 0, x: -20 },
     visible: { 
       opacity: 1, 
       x: 0,
-      filter: 'blur(0px)',
       transition: {
-        duration: 0.3,
-        ease: [0.6, 0.05, -0.01, 0.9]
+        duration: 0.2,
+        ease: "easeOut"
       }
     },
     exit: { 
       opacity: 0, 
       x: -10,
-      filter: 'blur(10px)',
-      transition: {
-        duration: 0.2,
-        ease: "easeInOut"
-      }
-    },
-    hover: {
-      scale: 1.05,
-      x: 10,
       transition: {
         duration: 0.2,
         ease: "easeInOut"
