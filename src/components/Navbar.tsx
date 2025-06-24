@@ -110,6 +110,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
     }
   };
 
+  const menuItems = [
+    // { href: '/', label: 'Home' },
+    { href: '/why', label: 'Why we made LumenFlow?' },
+    { href: '/how', label: 'How It Works' },
+  ];
+
   return (
     <motion.nav
       style={{
@@ -140,18 +146,21 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
 
           {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center space-x-8">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <Link 
-                href="/why"
-                className="text-neutral-300 hover:text-white transition-colors"
+            {menuItems.map((item, index) => (
+              <motion.div
+                key={item.href}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
               >
-                Why we made LumenFlow?
-              </Link>
-            </motion.div>
+                <Link 
+                  href={item.href}
+                  className="text-neutral-300 hover:text-white transition-colors"
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
+            ))}
 
             {/* Bell Icon - Desktop */}
             <motion.div
@@ -297,7 +306,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -306,20 +315,26 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="md:hidden py-4 px-6 bg-neutral-800/20 backdrop-blur-sm rounded-lg mt-2"
+              className="absolute top-full right-0 w-64 bg-neutral-900/95 backdrop-blur-lg border-l border-neutral-800 p-4 rounded-bl-2xl"
             >
-              <motion.div
-                variants={menuItemVariants}
-                className="border-l-2 border-neutral-700 pl-4"
-              >
-                <Link
-                  href="/why"
-                  className="block py-3 text-neutral-300 hover:text-white transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+              {menuItems.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  variants={menuItemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ delay: index * 0.1 }}
                 >
-                  Why we made LumenFlow?
-                </Link>
-              </motion.div>
+                  <Link
+                    href={item.href}
+                    className="block py-3 px-4 text-neutral-300 hover:text-white hover:bg-neutral-800/50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
             </motion.div>
           )}
         </AnimatePresence>
