@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
+import CursorAnimation from '@/components/CursorAnimation';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${inter.className} bg-neutral-900 text-neutral-100 antialiased`}>
         <ClientLayout>
+          <CursorAnimation />
           {children}
         </ClientLayout>
       </body>

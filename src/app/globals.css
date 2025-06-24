@@ -31,6 +31,7 @@ body {
   rgb(var(--background-start-rgb));
   overflow-x: hidden;
   min-height: 100vh;
+  cursor: none;
 }
 
 /* Smooth scrolling */
@@ -328,16 +329,27 @@ img {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Hide default cursor on interactive elements */
+a, button, [role="button"] {
+  cursor: none;
+}
 
+/* Show default cursor for text inputs and textareas */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  cursor: text;
+}
 
-
-
-
-
-
-
-
-
+/* Show default cursor for select elements */
+select {
+  cursor: default;
+}
 
 .type--A {
   --line_color: #555555;

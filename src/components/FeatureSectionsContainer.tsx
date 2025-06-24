@@ -25,19 +25,19 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
   // Calculate total scroll distance needed
   const totalSections = features.length;
   // Add extra padding at start and end to prevent overlap
-  const scrollDistance = `${(totalSections + 1.5) * 100}vh`; // Increased from +1 to +1.5 for more space
+  const scrollDistance = `${(totalSections + 2) * 100}vh`; // Increased from +1.5 to +2 for more space
 
   // Main container visibility
   const containerVisibility = useTransform(
     scrollYProgress,
-    [0, 0.1, 0.9, 1],
+    [0, 0.1, 0.85, 1], // Changed from 0.9 to 0.85 to extend visibility
     [0, 1, 1, 0]
   );
 
   return (
     <div className="relative bg-neutral-900 z-40">
       {/* Increased top spacer */}
-      <div className="h-[65vh]" />
+      <div className="h-[75vh]" /> {/* Increased from 65vh to 75vh */}
       
       <div
         ref={containerRef}
@@ -63,8 +63,8 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
           <motion.div
             className="absolute left-[40px] sm:left-[60px] md:left-[80px] top-0 w-1 h-full bg-gradient-to-b from-google-blue via-google-red to-google-yellow z-50"
             style={{
-              scaleY: useTransform(scrollYProgress, [0.1, 0.9], [0, 1]),
-              opacity: useTransform(scrollYProgress, [0.05, 0.1, 0.9, 0.95], [0, 1, 1, 0])
+              scaleY: useTransform(scrollYProgress, [0.1, 0.85], [0, 1]), // Changed from 0.9 to 0.85
+              opacity: useTransform(scrollYProgress, [0.05, 0.1, 0.85, 0.95], [0, 1, 1, 0]) // Changed from 0.9 to 0.85
             }}
           />
 
@@ -74,19 +74,21 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
             style={{
               y: useTransform(
                 scrollYProgress,
-                [0.1, 0.9],
+                [0.1, 0.85], // Changed from 0.9 to 0.85
                 ["0%", `-${(totalSections - 1) * 100}%`]
               )
             }}
           >
             {features.map((feature, index) => {
+              // Adjust the progress calculation for each section
+              const isLastSection = index === features.length - 1;
               const sectionProgress = useTransform(
                 scrollYProgress,
                 [
                   (index - 0.5) / totalSections,
                   index / totalSections,
-                  (index + 1) / totalSections,
-                  (index + 1.5) / totalSections
+                  (index + (isLastSection ? 1.5 : 1)) / totalSections, // Extended duration for last section
+                  (index + (isLastSection ? 2 : 1.5)) / totalSections  // Extended fade-out for last section
                 ],
                 [0, 1, 1, 0]
               );
@@ -97,12 +99,17 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
                   className="h-screen w-full flex-shrink-0 flex items-center justify-center"
                   style={{
                     opacity: sectionProgress,
-                    scale: useTransform(sectionProgress, [0, 1], [0.8, 1]),
+                    scale: useTransform(sectionProgress, [0, 1], [0.95, 1]),
                     filter: useTransform(
                       sectionProgress,
                       [0, 1],
-                      ["blur(4px)", "blur(0px)"]
+                      ["blur(8px)", "blur(0px)"]
                     )
+                  }}
+                  transition={{
+                    type: "spring",
+                    damping: 30,
+                    stiffness: 300
                   }}
                 >
                   <div className="max-w-6xl mx-auto w-full">
@@ -117,16 +124,17 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
           <motion.div
             className="fixed right-4 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 flex flex-col space-y-2 sm:space-y-3 md:space-y-4 z-50"
             style={{
-              opacity: useTransform(scrollYProgress, [0.05, 0.1, 0.9, 0.95], [0, 1, 1, 0])
+              opacity: useTransform(scrollYProgress, [0.05, 0.1, 0.85, 0.95], [0, 1, 1, 0]) // Changed from 0.9 to 0.85
             }}
           >
             {features.map((feature, index) => {
+              const isLastSection = index === features.length - 1;
               const dotProgress = useTransform(
                 scrollYProgress,
                 [
-                  (index / totalSections) * 0.8 + 0.1,
-                  ((index + 0.5) / totalSections) * 0.8 + 0.1,
-                  ((index + 1) / totalSections) * 0.8 + 0.1
+                  (index / totalSections) * 0.75 + 0.1,
+                  ((index + 0.5) / totalSections) * 0.75 + 0.1,
+                  ((index + (isLastSection ? 1.5 : 1)) / totalSections) * 0.75 + 0.1
                 ],
                 [0.2, 1, 0.2]
               );
@@ -155,7 +163,7 @@ const FeatureSectionsContainer: React.FC<FeatureSectionsContainerProps> = ({ fea
       </div>
 
       {/* Increased bottom spacer */}
-      <div className="h-[45vh]" />
+      <div className="h-[55vh]" /> {/* Increased from 45vh to 55vh */}
     </div>
   );
 };

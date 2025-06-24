@@ -321,111 +321,29 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({
             </motion.div>
           </div>
 
-          {/* Features Grid - Improved responsive layout */}
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false }}
-          >
+          {/* Features Grid - Simplified without animations */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto">
             {features.map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
                 className={`relative p-4 sm:p-6 rounded-xl bg-neutral-800/30 backdrop-blur-sm border border-neutral-700/50 ${colors.shadow} group hover:bg-neutral-800/40 transition-all duration-300`}
-                variants={{
-                  hidden: { opacity: 0, y: 20, scale: 0.95 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: {
-                      type: "spring",
-                      stiffness: 100,
-                      damping: 20
-                    }
-                  }
-                }}
-                whileHover={{
-                  scale: 1.02,
-                  transition: { duration: 0.2 }
-                }}
               >
-                {/* Gradient border animation */}
-                <motion.div
-                  className="absolute inset-0 rounded-xl -z-10"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                {/* Simple gradient border */}
+                <div className="absolute inset-0 rounded-xl -z-10">
                   <div className={`absolute inset-0 rounded-xl bg-gradient-to-r ${colors.gradient} opacity-20`} />
-                </motion.div>
-
-                <div className={`flex items-start gap-3 text-left`}>
-                  <motion.div 
-                    className={`${colors.text} mt-1`}
-                    whileHover={{ scale: 1.1, rotate: 10 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    {getFeatureIcon(feature)}
-                  </motion.div>
-                  <motion.p 
-                    className="text-sm sm:text-base md:text-lg text-neutral-200"
-                    initial={{ opacity: 0.8 }}
-                    whileHover={{ opacity: 1 }}
-                  >
-                    {feature}
-                  </motion.p>
                 </div>
 
-                {/* Floating particles */}
-                <motion.div
-                  className="absolute inset-0 pointer-events-none"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                >
-                  {[...Array(3)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className={`absolute w-1 h-1 ${colors.primary} rounded-full`}
-                      initial={{
-                        x: Math.random() * 100 + "%",
-                        y: Math.random() * 100 + "%",
-                      }}
-                      animate={{
-                        x: [
-                          Math.random() * 100 + "%",
-                          Math.random() * 100 + "%",
-                          Math.random() * 100 + "%",
-                        ],
-                        y: [
-                          Math.random() * 100 + "%",
-                          Math.random() * 100 + "%",
-                          Math.random() * 100 + "%",
-                        ],
-                        opacity: [0.2, 0.5, 0.2],
-                        scale: [1, 1.5, 1],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: i * 0.5,
-                      }}
-                    />
-                  ))}
-                </motion.div>
-              </motion.div>
+                <div className="relative z-10">
+                  <div className={`${colors.text} mt-1`}>
+                    {getFeatureIcon(feature)}
+                  </div>
+                  <p className="text-sm sm:text-base md:text-lg text-neutral-200">
+                    {feature}
+                  </p>
+                </div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
     </>
