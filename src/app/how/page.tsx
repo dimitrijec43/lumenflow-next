@@ -8,6 +8,7 @@ import VideoPlayer from '@/components/VideoPlayer';
 import { useState } from 'react';
 import Image from 'next/image';
 import logo from '@/assets/logo.png';
+import exampleVideo from '@/assets/example.mp4';
 
 // Animation variants
 const containerVariants = {
@@ -163,7 +164,7 @@ export default function HowPage() {
                 className="relative py-10 lg:py-0"
               >
                 <VideoPlayer
-                  src={require('@/assets/example.mp4')}
+                  src={exampleVideo}
                   className="w-auto h-[65vh] md:h-[58vh] lg:h-[40vh]"
                 />
               </motion.div>
