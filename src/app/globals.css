@@ -37,6 +37,7 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden !important;
 }
 
 /* Custom scrollbar */
@@ -227,7 +228,7 @@ img {
 }
 
 .text-gradient-multi {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400;
   background-size: 200% 200%;
   animation: gradient 5s ease infinite;
 }

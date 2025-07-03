@@ -39,7 +39,7 @@ const ConnectedFeatures = () => {
   });
 
   return (
-    <div style={{ background: 'linear-gradient(180deg,rgba(18, 18, 18, 0.8),rgb(18, 18, 18))'}}>
+    <div style={{ background: 'rgba(18, 18, 18, 1)'}}>
     <section className="py-16 md:py-32 relative overflow-hidden" style={{ backdropFilter: 'blur(65px)' }}>
           <div className="container mx-auto px-4">
             <motion.h2

@@ -18,7 +18,44 @@ import stats from '@/assets/stats.png';
 import taskMan from '@/assets/task_man.png';
 import hush from '@/assets/Hush.png';
 import sync from '@/assets/sync.png';
+import pixel1 from '@/assets/google-pixel1.png';
+import pixel2 from '@/assets/google-pixel2.png';
 import FeatureSectionsContainer from '@/components/FeatureSectionsContainer';
+import BenefitsSection from '@/components/BenefitsSection';
+import deep_work_pixel from '@/assets/custom.png';
+import TaskManagementSection from '@/components/TaskManagementSection';
+import FocusTimerSection from '@/components/FocusTimerSection';
+
+
+
+const FeatureCard = ({ title, description, icon }: { title: string; description: string; icon: React.ReactNode }) => (
+  <motion.div
+    className="relative p-6 bg-neutral-800/20 rounded-2xl backdrop-blur-sm border border-neutral-500/30"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    whileHover={{ scale: 1.02, backgroundColor: "rgba(38, 38, 38, 0.3)" }}
+    transition={{ duration: 0.3 }}
+  >
+    <div className="absolute -top-6 left-6 w-12 h-12 bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-700/50">
+      {icon}
+    </div>
+    <h3 className="text-xl font-bold mb-3 mt-4 text-gradient-multi">{title}</h3>
+    <p className="text-neutral-300">{description}</p>
+  </motion.div>
+);
+
+const pathVariants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: {
+      duration: 2,
+      ease: "easeInOut"
+    }
+  }
+};
 
 // Animation variants
 const containerVariants = {
@@ -133,8 +170,8 @@ export default function Home() {
             animate={{
               background: [
                 'radial-gradient(circle at 50% 50%, rgba(66, 133, 244, 0.1) 0%, transparent 50%)',
-                'radial-gradient(circle at 50% 50%, rgba(234, 67, 53, 0.1) 0%, transparent 50%)',
-                'radial-gradient(circle at 50% 50%, rgba(251, 188, 5, 0.1) 0%, transparent 50%)',
+                'radial-gradient(circle at 50% 50%, rgba(53, 234, 62, 0.1) 0%, transparent 50%)',
+                'radial-gradient(circle at 50% 50%, rgba(5, 9, 251, 0.1) 0%, transparent 50%)',
                 'radial-gradient(circle at 50% 50%, rgba(52, 168, 83, 0.1) 0%, transparent 50%)',
               ]
             }}
@@ -162,15 +199,17 @@ export default function Home() {
                   <span className="inline-block mt-1 xs:mt-0"> Simplified</span>
                 </motion.h1>
 
-                <motion.p
+                
+
+                 <motion.p
                   className="text-sm xs:text-base sm:text-lg md:text-xl text-neutral-200 mb-4 sm:mb-8 max-w-[260px] xs:max-w-[280px] sm:max-w-none mx-auto md:pr-5"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <span className="dissapear-text">LumenFlow is designed to cut through the noise. </span>
+                  <span className="dissapear-text">LumenFlow is designed to cut through the noise. </span> 
                   {/* <span className="text-white block mt-1 sm:inline sm:mt-0" style={{ fontSize: 'clamp(0.875rem, 2vw, 1.1rem)', fontWeight: 'bold' }}> Achieve more, stress less.</span> */}
-                  <span className="text-white block mt-1 sm:inline sm:mt-0" style={{ fontSize: 'clamp(0.975rem, 2vw, 1.1rem)', fontWeight: 'bold' }}> Clarity Over Complexity: Your Focus,<span style={{ color: 'rgb(243, 255, 70)' }}> Elevated.</span></span>
+                   <span className="text-white block mt-1 sm:inline sm:mt-0" style={{ fontSize: 'clamp(0.975rem, 2vw, 1.1rem)', fontWeight: 'bold' }}> Clarity Over Complexity: Your Focus,<span style={{ color: 'rgb(243, 255, 70)' }}> Elevated.</span></span>
                   
                 </motion.p>
 
@@ -585,12 +624,205 @@ export default function Home() {
         <div className="h-screen w-full" />
 
         {/* Scrollable Content */}
-        <div className="relative z-10" style={{  }}>
+        <div className="relative z-10 pt-10" style={{ background: 'linear-gradient(180deg,rgba(18, 18, 18, 0.85),rgb(18, 18, 18))', backdropFilter: 'blur(65px)' }}>
+          {/* App Screens Section */}
+          <Image src={deep_work_pixel} alt="App Screen 1" className="w-10 h-10 object-contain rounded-3xl mx-auto" />
+          <section className="relative pb-20 pt-10 overflow-hidden">
+            <div className="container mx-auto px-4">
+              <motion.div
+                className="text-center mb-20"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold pb-2 mb-6 text-gradient-multi">
+                  Easy & Intuitive Interface
+                </h2>
+              </motion.div>
+
+              <div className="relative h-[400px] sm:h-[500px] md:h-[600px] flex items-center justify-center">
+                {/* Drawing Animation Background */}
+                <motion.div 
+                  className="absolute inset-0 opacity-20"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 0.2 }}
+                  viewport={{ margin: "-100px" }}
+                  transition={{ duration: 1.5 }}
+                >
+                  <DrawingAnimation className="w-full h-full" />
+                </motion.div>
+
+                {/* Phone Screen 1 */}
+                <motion.div
+                  className="absolute w-[180px] sm:w-[220px] md:w-[240px] h-[360px] sm:h-[440px] md:h-[480px]"
+                  initial={{ opacity: 0, x: -100, y: 100, scale: 0.8 }}
+                  whileInView={{ 
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      duration: 1.2,
+                      delay: 0.1,
+                      bounce: 0.3
+                    }
+                  }}
+                  viewport={{ margin: "-100px" }}
+                  animate={{ 
+                    y: [-20, 20, -20],
+                    scale: [1, 1.05, 1],
+                    rotate: [-2, 2, -2]
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 10,
+                    ease: "easeInOut"
+                  }}
+                  style={{
+                    left: '16.5%',
+                    perspective: '1000px'
+                  }}
+                >
+                  <Image
+                    src={pixel1}
+                    alt="App Screen 1"
+                    className="w-full h-full object-contain rounded-3xl shadow-2xl"
+                  />
+                </motion.div>
+
+                {/* Phone Screen 2 */}
+                <motion.div
+                  className="absolute w-[200px] sm:w-[240px] md:w-[260px] h-[400px] sm:h-[480px] md:h-[520px] z-10"
+                  initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                  whileInView={{ 
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      duration: 1.2,
+                      delay: 0.3,
+                      bounce: 0.3
+                    }
+                  }}
+                  viewport={{ margin: "-100px" }}
+                  animate={{ 
+                    y: [20, -20, 20],
+                    scale: [1.1, 1.15, 1.1],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 8,
+                    ease: "easeInOut"
+                  }}
+                  style={{
+                    perspective: '1000px'
+                  }}
+                >
+                  <Image
+                    src={pixel2}
+                    alt="App Screen 2"
+                    className="w-full h-full object-contain rounded-3xl shadow-2xl"
+                  />
+                </motion.div>
+
+                {/* Phone Screen 3 */}
+                <motion.div
+                  className="absolute w-[180px] sm:w-[220px] md:w-[240px] h-[360px] sm:h-[440px] md:h-[480px]"
+                  initial={{ opacity: 0, x: 100, y: 100, scale: 0.8 }}
+                  whileInView={{ 
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      duration: 1.2,
+                      delay: 0.5,
+                      bounce: 0.3
+                    }
+                  }}
+                  viewport={{ margin: "-100px" }}
+                  animate={{ 
+                    y: [-30, 30, -30],
+                    scale: [1, 1.05, 1],
+                    rotate: [2, -2, 2]
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 12,
+                    ease: "easeInOut"
+                  }}
+                  style={{
+                    right: '2%',
+                    perspective: '1000px'
+                  }}
+                >
+                  <Image
+                    src={stats}
+                    alt="App Screen 3"
+                    className="w-full h-full object-contain rounded-3xl shadow-2xl"
+                  />
+                </motion.div>
+
+                {/* Task Management Screen */}
+                <motion.div
+                  className="absolute w-[160px] sm:w-[200px] md:w-[220px] h-[320px] sm:h-[400px] md:h-[440px]"
+                  initial={{ opacity: 0, x: 50, y: 100, scale: 0.8 }}
+                  whileInView={{ 
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      duration: 1.2,
+                      delay: 0.7,
+                      bounce: 0.3
+                    }
+                  }}
+                  viewport={{ margin: "-100px" }}
+                  animate={{ 
+                    y: [30, -30, 30],
+                    scale: [0.9, 0.95, 0.9],
+                    rotate: [-3, 3, -3]
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 9,
+                    ease: "easeInOut"
+                  }}
+                  style={{
+                    right: '22%',
+                    perspective: '1000px'
+                  }}
+                >
+                  <Image
+                    src={taskMan}
+                    alt="Task Management"
+                    className="w-full h-full object-contain rounded-3xl shadow-2xl"
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </section>
+
+          <div className="relative pt-10" style={{ height: '200px', width: '100%', marginTop: '-100px', background: 'linear-gradient(180deg,rgba(18, 18, 18, 0.65),rgb(18, 18, 18))', backdropFilter: 'blur(44px)' }}></div>
+
           {/* Connected Features Section */}
           <ConnectedFeatures />
 
+          {/* Benefits Section */}
+          <BenefitsSection />
+          <TaskManagementSection />
+          <FocusTimerSection />
+
+          
+
           {/* Feature Sections */}
-          <FeatureSectionsContainer 
+          {/* <FeatureSectionsContainer 
             features={[
               {
                 title: "Smart Focus Timer",
@@ -637,7 +869,7 @@ export default function Home() {
                 color: "green"
               }
             ]}
-          />
+          /> */}
           <div className="h-[30vh]" />
 
           {/* Call to Action */}
@@ -717,7 +949,7 @@ export default function Home() {
             </div>
             <div style={{ height: '100px' }}></div>
             <footer className="rounded-full shadow-sm m-4 mt-20  border border-neutral-700/30">
-              <div className="w-full mx-auto max-w-screen-xl p-4 flex items-center justify-between">
+              <div className="w-full mx-auto max-w-screen-xl py-4 px-0 flex items-center justify-between">
                 <span className="text-[12px] sm:text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">LumenFlow™</a>. All Rights Reserved.</span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                   <li>
@@ -728,6 +960,7 @@ export default function Home() {
             </footer>
           </section>
         </div>
+        
       </main>
       <NotifyModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
