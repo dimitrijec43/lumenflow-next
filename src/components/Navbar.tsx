@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import logo from '@/assets/logo.png';
 
 interface NavbarProps {
@@ -11,8 +12,10 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRinging, setIsRinging] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { scrollY } = useScroll();
@@ -26,6 +29,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
     [0, 100],
     [0, 0.1]
   );
+
+  // Run initial animation only once when component mounts
+  useEffect(() => {
+    if (!hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, []);
 
   // Handle click outside
   useEffect(() => {
@@ -58,7 +68,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
   const ringBell = () => {
     setIsRinging(true);
     setTimeout(() => setIsRinging(false), 1000);
-    onNotifyClick();
   };
 
   // Menu animation variants
@@ -111,9 +120,118 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
   };
 
   const menuItems = [
-    // { href: '/', label: 'Home' },
-    { href: '/why', label: 'Why we made LumenFlow?' },
-    { href: '/how', label: 'How It Works' },
+    { 
+      href: '/', 
+      label: 'Hello!',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
+          <defs>
+            <linearGradient id="welcomeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#3B82F6" />
+              <stop offset="50%" stopColor="#9333EA" />
+              <stop offset="100%" stopColor="#EC4899" />
+            </linearGradient>
+          </defs>
+          <motion.path
+            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            stroke="url(#welcomeGradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+          <motion.path
+            d="M9 11h.01M15 11h.01M9.5 15a3.5 3.5 0 005.5 0"
+            stroke="url(#welcomeGradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1, ease: "easeInOut", delay: 0.8 }}
+          />
+        </svg>
+      )
+    },
+    { 
+      href: '/why', 
+      label: 'Why we made LumenFlow?',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
+          <defs>
+            <linearGradient id="whyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#3B82F6" />
+              <stop offset="50%" stopColor="#9333EA" />
+              <stop offset="100%" stopColor="#EC4899" />
+            </linearGradient>
+          </defs>
+          <motion.path
+            d="M12 3v3m0 15v-3M3 12h3m15 0h-3m-2.5-7.5l-2 2m-7 7l-2 2m11-2l2 2m-11-11l2 2"
+            stroke="url(#whyGradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+          <motion.circle
+            cx="12"
+            cy="12"
+            r="4"
+            stroke="url(#whyGradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
+          />
+        </svg>
+      )
+    },
+    { 
+      href: '/how', 
+      label: 'How It Works?',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
+          <defs>
+            <linearGradient id="howGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#3B82F6" />
+              <stop offset="50%" stopColor="#9333EA" />
+              <stop offset="100%" stopColor="#EC4899" />
+            </linearGradient>
+          </defs>
+          <motion.path
+            d="M12 3v2m0 14v2M5.45 5.11l1.41 1.41m10.28 10.28l1.41 1.41M3 12h2m14 0h2M5.45 18.89l1.41-1.41m10.28-10.28l1.41-1.41"
+            stroke="url(#howGradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+          <motion.circle
+            cx="12"
+            cy="12"
+            r="5"
+            stroke="url(#howGradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
+          />
+          <motion.path
+            d="M12 9v3l2 2"
+            stroke="url(#howGradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
+          />
+        </svg>
+      )
+    },
   ];
 
   return (
@@ -124,11 +242,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
           `1px solid rgba(38, 38, 38, ${opacity})`)
       }}
       className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg"
+      initial={hasAnimated ? false : { opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto py-2 px-4">
         <div className="flex items-center justify-between h-16">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={hasAnimated ? false : { opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="flex items-center space-x-2"
@@ -146,21 +267,80 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
 
           {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item, index) => (
-              <motion.div
-                key={item.href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
-              >
-                <Link 
-                  href={item.href}
-                  className="text-neutral-300 hover:text-white transition-colors"
+            {menuItems.map((item, index) => {
+              const isActive = pathname === item.href || 
+                (item.href !== '/' && pathname?.startsWith(item.href));
+              
+              return (
+                <motion.div
+                  key={item.href}
+                  initial={hasAnimated ? false : { opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: hasAnimated ? 0 : 0.1 * (index + 1) }}
+                  className="relative"
                 >
-                  {item.label}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link 
+                    href={item.href}
+                    className={`relative group px-4 py-2 ${isActive ? 'text-white' : 'text-neutral-300 hover:text-white'} transition-colors flex items-center gap-2`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute left-0 -ml-8"
+                      >
+                        {item.icon}
+                      </motion.div>
+                    )}
+                    {item.label}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeIndicator"
+                        className="absolute inset-0 rounded-xl"
+                        initial={false}
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      >
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10" />
+                        <motion.div 
+                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20"
+                          animate={{
+                            opacity: [0.1, 0.2, 0.1],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+                        <div className="absolute inset-0 rounded-xl border border-neutral-700/50" />
+                        {/* <motion.div
+                          className="absolute -bottom-0.5 left-0 right-0 h-[2px]"
+                          style={{
+                            background: "linear-gradient(90deg, #3B82F6, #9333EA, #EC4899)",
+                          }}
+                          animate={{
+                            opacity: [0.7, 1, 0.7],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        /> */}
+                      </motion.div>
+                    )}
+                    <motion.div
+                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{
+                        background: "linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05), rgba(236, 72, 153, 0.05))",
+                      }}
+                    />
+                  </Link>
+                </motion.div>
+              );
+            })}
 
             {/* Bell Icon - Desktop */}
             <motion.div
@@ -173,7 +353,10 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
                 className="p-2 rounded-full hover:bg-neutral-800 transition-colors relative"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={ringBell}
+                onClick={() => {
+                  ringBell();
+                  onNotifyClick();
+                }}
               >
                 <motion.svg
                   width="24"
@@ -236,7 +419,10 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
                 className="p-2 rounded-full hover:bg-neutral-800 transition-colors relative"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={ringBell}
+                onClick={() => {
+                  ringBell();
+                  onNotifyClick();
+                }}
               >
                 <motion.svg
                   width="24"

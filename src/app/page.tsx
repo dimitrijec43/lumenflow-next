@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform, useMotionValue, useSpring, color } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
+import NotifyModal from '@/components/NotifyModal';
 import DrawingAnimation from '@/components/DrawingAnimation';
 import FeatureSection from '@/components/FeatureSection';
 import ConnectedFeatures from '@/components/ConnectedFeatures';
@@ -12,7 +12,6 @@ import appPreview from '@/assets/hero_group5.png';
 import heroApp from '@/assets/google-pixel2.png';
 import logo from '@/assets/logo.png';
 import sessionGroup from '@/assets/main_group.png';
-import NotifyModal from '@/components/NotifyModal';
 import deepWork from '@/assets/deep_work.png';
 import stats from '@/assets/stats.png';
 import taskMan from '@/assets/task_man.png';
@@ -25,6 +24,7 @@ import BenefitsSection from '@/components/BenefitsSection';
 import deep_work_pixel from '@/assets/custom.png';
 import TaskManagementSection from '@/components/TaskManagementSection';
 import FocusTimerSection from '@/components/FocusTimerSection';
+import soundsScreen from '@/assets/sounds.png';
 
 
 
@@ -155,8 +155,8 @@ export default function Home() {
 
   return (
     <>
-      <Navbar onNotifyClick={() => setIsModalOpen(true)} />
-      <main className="min-h-screen bg-neutral-900 text-neutral-100">
+      <main className="min-h-screen bg-neutral-900 text-neutral-100 relative overflow-hidden">
+        <DrawingAnimation className="absolute inset-0 opacity-10" />
         {/* Fixed Hero Section */}
         <motion.section
           style={{ scale, y, opacity: heroOpacity }}
@@ -800,7 +800,7 @@ export default function Home() {
                   }}
                 >
                   <Image
-                    src={taskMan}
+                    src={soundsScreen}
                     alt="Task Management"
                     className="w-full h-full object-contain rounded-3xl shadow-2xl"
                   />
@@ -949,11 +949,11 @@ export default function Home() {
             </div>
             <div style={{ height: '100px' }}></div>
             <footer className="rounded-full shadow-sm m-4 mt-20  border border-neutral-700/30">
-              <div className="w-full mx-auto max-w-screen-xl py-4 px-0 flex items-center justify-between">
+              <div className="w-full mx-auto max-w-screen-xl py-4 px-4 md:px-5 flex items-center justify-between">
                 <span className="text-[12px] sm:text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">LumenFlow™</a>. All Rights Reserved.</span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                   <li>
-                    <Image src={logo} alt="LumenFlow Logo" className="w-10 h-10" />
+                    <Image src={logo} alt="LumenFlow Logo" className="w-5 h-5 sm:w-10 sm:h-10 mb-2 sm:mb-0" />
                   </li>
                 </ul>
               </div>

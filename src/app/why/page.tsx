@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useRef } from 'react';
-import Navbar from '@/components/Navbar';
 import DrawingAnimation from '@/components/DrawingAnimation';
 import NotifyModal from '@/components/NotifyModal';
 import Image from 'next/image';
@@ -87,7 +86,6 @@ export default function WhyPage() {
 
   return (
     <>
-      <Navbar onNotifyClick={() => setIsModalOpen(true)} />
       <main className="min-h-screen bg-neutral-900 text-neutral-100 relative overflow-hidden">
         <DrawingAnimation className="absolute inset-0 opacity-10" />
         
@@ -166,12 +164,12 @@ export default function WhyPage() {
                   className="w-6 h-6 text-neutral-400"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  stroke="rgba(115, 223, 82, 0.86)"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeWidth={5}
                     d="M19 14l-7 7m0 0l-7-7m7 7V3"
                   />
                 </svg>
@@ -304,11 +302,11 @@ export default function WhyPage() {
 
         {/* Footer */}
         <footer className="rounded-full shadow-sm m-4 mt-20 border border-neutral-700/30">
-          <div className="w-full mx-auto max-w-screen-xl py-4 px-0 flex items-center justify-between">
+          <div className="w-full mx-auto max-w-screen-xl py-4 px-4 md:px-5 flex items-center justify-between">
             <span className="text-[12px] sm:text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">LumenFlow™</a>. All Rights Reserved.</span>
             <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
               <li>
-                <Image src={logo} alt="LumenFlow Logo" className="w-10 h-10" />
+                <Image src={logo} alt="LumenFlow Logo" className="w-5 h-5 sm:w-10 sm:h-10 mb-2 sm:mb-0" />
               </li>
             </ul>
           </div>

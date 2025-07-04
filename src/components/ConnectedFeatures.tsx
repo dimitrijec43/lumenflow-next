@@ -25,9 +25,9 @@ const features: Feature[] = [
     icon: "📊"
   },
   {
-    title: "Cross-device Sync",
-    description: "Seamless synchronization across all devices",
-    icon: "🔄"
+    title: "Currated Sounds",
+    description: "Currated sounds to help you focus and relax",
+    icon: "🎧"
   }
 ];
 

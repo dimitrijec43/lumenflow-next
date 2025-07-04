@@ -24,17 +24,18 @@ const DrawingAnimation: React.FC<DrawingAnimationProps> = ({ className }) => {
              C 100,150 150,100 250,100
              Z"
           stroke="rgba(60, 162, 247, 0.3)"
-          strokeWidth="8"
+          strokeWidth="308"
           strokeLinecap="round"
           fill="none"
           initial={{ pathLength: 0 }}
           animate={{ 
             pathLength: [0, 1, 0],
-            rotate: [0, 360],
+            rotate: [0, -360],
             scale: [1, 1.1, 1]
           }}
+          style={{ transformOrigin: '250px 250px' }}
           transition={{
-            duration: 8,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -55,9 +56,10 @@ const DrawingAnimation: React.FC<DrawingAnimationProps> = ({ className }) => {
           initial={{ pathLength: 0 }}
           animate={{ 
             pathLength: [0, 1, 0],
-            rotate: [360, 0],
+            rotate: [0, 360],
             scale: [1, 0.9, 1]
           }}
+          style={{ transformOrigin: '250px 250px' }}
           transition={{
             duration: 6,
             repeat: Infinity,
@@ -73,19 +75,19 @@ const DrawingAnimation: React.FC<DrawingAnimationProps> = ({ className }) => {
             r="4"
             fill="rgba(60, 162, 247, 0.2)"
             initial={{ 
-              x: 250 + Math.cos(i * Math.PI / 4) * 150,
-              y: 250 + Math.sin(i * Math.PI / 4) * 150
+              x: 250 + Math.cos(-i * Math.PI / 4) * 150,
+              y: 250 + Math.sin(-i * Math.PI / 4) * 150
             }}
             animate={{
               x: [
-                250 + Math.cos(i * Math.PI / 4) * 150,
-                250 + Math.cos((i + 1) * Math.PI / 4) * 160,
-                250 + Math.cos(i * Math.PI / 4) * 150
+                250 + Math.cos(-i * Math.PI / 4) * 150,
+                250 + Math.cos(-(i + 1) * Math.PI / 4) * 160,
+                250 + Math.cos(-i * Math.PI / 4) * 150
               ],
               y: [
-                250 + Math.sin(i * Math.PI / 4) * 150,
-                250 + Math.sin((i + 1) * Math.PI / 4) * 160,
-                250 + Math.sin(i * Math.PI / 4) * 150
+                250 + Math.sin(-i * Math.PI / 4) * 150,
+                250 + Math.sin(-(i + 1) * Math.PI / 4) * 160,
+                250 + Math.sin(-i * Math.PI / 4) * 150
               ],
               scale: [1, 1.5, 1]
             }}
@@ -111,10 +113,10 @@ const DrawingAnimation: React.FC<DrawingAnimationProps> = ({ className }) => {
           {[...Array(8)].map((_, i) => (
             <motion.line
               key={i}
-              x1={250 + Math.cos(i * Math.PI / 4) * 150}
-              y1={250 + Math.sin(i * Math.PI / 4) * 150}
-              x2={250 + Math.cos(((i + 1) % 8) * Math.PI / 4) * 150}
-              y2={250 + Math.sin(((i + 1) % 8) * Math.PI / 4) * 150}
+              x1={250 + Math.cos(-i * Math.PI / 4) * 150}
+              y1={250 + Math.sin(-i * Math.PI / 4) * 150}
+              x2={250 + Math.cos(-(((i + 1) % 8)) * Math.PI / 4) * 150}
+              y2={250 + Math.sin(-(((i + 1) % 8)) * Math.PI / 4) * 150}
               stroke="rgba(60, 162, 247, 0.1)"
               strokeWidth="1"
             />

@@ -1,12 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Navbar from '@/components/Navbar';
-import DrawingAnimation from '@/components/DrawingAnimation';
+import { useState } from 'react';
 import NotifyModal from '@/components/NotifyModal';
+import DrawingAnimation from '@/components/DrawingAnimation';
 import VideoPlayer from '@/components/VideoPlayer';
 import PhoneCarousel from '@/components/PhoneCarousel';
-import { useState } from 'react';
 import Image from 'next/image';
 import logo from '@/assets/logo.png';
 import exampleVideo from '@/assets/example.mp4';
@@ -16,7 +15,7 @@ import taskMan from '@/assets/task_man.png';
 import deepWork from '@/assets/deep_work.png';
 import inHand from '@/assets/in_hand.png';
 import mockup from '@/assets/mockup.png';
-
+import mockup2 from '@/assets/mockup2.png';
 
 // Animation variants
 const containerVariants = {
@@ -78,7 +77,6 @@ export default function HowPage() {
 
   return (
     <>
-      <Navbar onNotifyClick={() => setIsModalOpen(true)} />
       <main className="min-h-screen bg-neutral-900 text-neutral-100 relative overflow-hidden">
         <DrawingAnimation className="absolute inset-0 opacity-10" />
         
@@ -811,18 +809,9 @@ export default function HowPage() {
                 variants={itemVariants}
                 className="text-center mb-10 relative pt-10"
               >
-                {/* <motion.div
-                  className="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: "8rem", opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                /> */}
                 <h1 className="text-5xl md:text-6xl font-bold mb-2 pb-2 text-gradient-multi">
                   Try it Yourself
                 </h1>
-                {/* <p className="text-xl md:text-2xl text-yellow-200 font-bold relative pb-6">
-                  Simple & easy to use.
-                </p> */}
                 <FeatureCard
                     title=""
                     description="Many task management apps promise the world but deliver overwhelming complexity. We believe powerful organization shouldn't come at the cost of simplicity."
@@ -859,25 +848,12 @@ export default function HowPage() {
                       </motion.svg>
                     }
                   />
-                {/* <p className="text-lg text-neutral-200 max-w-3xl mx-auto">
-                  Many task management apps promise the world but deliver overwhelming complexity. We believe powerful organization shouldn't come at the cost of simplicity.
-                </p> */}
               </motion.div>
 
-              <Image src={mockup} alt="LumenFlow" className="w-full h-auto" />
+              <Image src={mockup2} alt="LumenFlow" className="w-full h-auto" />
 
               {/* Main Content Section - Video and Features */}
               <div className="">
-                {/* <motion.div
-                  variants={itemVariants}
-                  className="relative py-10 lg:py-0"
-                >
-                  <VideoPlayer
-                    src={exampleVideo}
-                    className="w-auto h-[65vh] md:h-[58vh] lg:h-[40vh]"
-                  />
-                </motion.div> */}
-
                 {/* Features Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <FeatureCard
@@ -1158,7 +1134,7 @@ export default function HowPage() {
                 <span className="text-[12px] sm:text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">LumenFlow™</a>. All Rights Reserved.</span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                   <li>
-                    <Image src={logo} alt="LumenFlow Logo" className="w-10 h-10" />
+                    <Image src={logo} alt="LumenFlow Logo" className="w-5 h-5 sm:w-10 sm:h-10 mb-2 sm:mb-0" />
                   </li>
                 </ul>
               </div>
