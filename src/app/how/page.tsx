@@ -957,12 +957,12 @@ export default function HowPage() {
                     Productivity Designed Around You
                   </h2>
                   <p className="text-neutral-300 leading-relaxed text-lg mb-8">
-                    In a world of rigid tools and digital noise, LumenFlow is your sanctuary of personalized focus. Every pixel, every feature, is designed to be intuitive and direct, helping you achieve more without feeling overwhelmed.
+                    In a world of rigid tools and digital noise, illumioFlow is your sanctuary of personalized focus. Every pixel, every feature, is designed to be intuitive and direct, helping you achieve more without feeling overwhelmed.
                   </p>
 
                   {/* Adding Comparison Section */}
                   <div className="mt-16 pt-20 text-left relative z-10">
-                    <h3 className="text-3xl font-bold mb-6 text-gradient-multi text-center">Why LumenFlow Stands Out</h3>
+                    <h3 className="text-3xl font-bold mb-6 text-gradient-multi text-center">Why illumioFlow Stands Out</h3>
                     <div className="grid md:grid-cols-2 gap-8 mb-12">
                       <motion.div 
                         className="bg-neutral-800/20 rounded-2xl p-6 border border-neutral-700/30 relative hover:bg-neutral-800/30 transition-colors duration-300"
@@ -983,7 +983,7 @@ export default function HowPage() {
                         whileHover={{ scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       >
-                        <h4 className="text-xl font-semibold mb-4 text-green-400">LumenFlow Approach</h4>
+                        <h4 className="text-xl font-semibold mb-4 text-green-400">illumioFlow Approach</h4>
                         <ul className="space-y-3 text-neutral-300">
                           <li>• Essential features only</li>
                           <li>• Instant productivity</li>
@@ -997,7 +997,7 @@ export default function HowPage() {
 
                   {/* Adding Benefits Section */}
                   <div className="mt-16 pt-20 relative z-10">
-                    <h3 className="text-2xl font-bold mb-8 text-gradient-multi text-center">The LumenFlow Difference</h3>
+                    <h3 className="text-2xl font-bold mb-8 text-gradient-multi text-center">The illumioFlow Difference</h3>
                     <div className="grid md:grid-cols-3 gap-6">
                       <motion.div 
                         className="text-center p-4 bg-neutral-800/10 rounded-xl hover:bg-neutral-800/20 transition-colors duration-300"
@@ -1131,10 +1131,10 @@ export default function HowPage() {
             </motion.div>
             <footer className="rounded-full shadow-sm m-4 mt-20  border border-neutral-700/30">
               <div className="w-full mx-auto max-w-screen-xl p-4 flex items-center justify-between">
-                <span className="text-[12px] sm:text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">LumenFlow™</a>. All Rights Reserved.</span>
+                <span className="text-[12px] sm:text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">illumioFlow™</a>. All Rights Reserved.</span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                   <li>
-                    <Image src={logo} alt="LumenFlow Logo" className="w-5 h-5 sm:w-10 sm:h-10 mb-2 sm:mb-0" />
+                    <Image src={logo} alt="illumioFlow Logo" className="w-5 h-5 sm:w-10 sm:h-10 mb-2 sm:mb-0" />
                   </li>
                 </ul>
               </div>

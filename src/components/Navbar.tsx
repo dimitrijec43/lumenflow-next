@@ -155,7 +155,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
     },
     { 
       href: '/why', 
-      label: 'Why we made LumenFlow?',
+      label: 'Why we made illumioFlow?',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
           <defs>
@@ -257,7 +257,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
             <Link href="/" className="relative w-10 h-10 hover:opacity-80 transition-opacity">
               <Image
                 src={logo}
-                alt="LumenFlow"
+                alt="illumioFlow"
                 fill
                 className="object-contain"
                 priority

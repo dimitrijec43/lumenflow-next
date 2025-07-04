@@ -133,7 +133,7 @@ const FocusTimerSection = () => {
                     cy="50%"
                     r="45%"
                     fill="none"
-                    stroke="rgba(234, 179, 8, 1)"
+                    stroke="rgb(43, 131, 233)"
                     strokeWidth="8"
                     strokeLinecap="round"
                     initial={{ pathLength: 0 }}
@@ -148,20 +148,21 @@ const FocusTimerSection = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <motion.span 
-                      className="text-4xl font-bold text-yellow-500"
+                      className="text-4xl font-bold text-blue-500"
                       initial={{ scale: 0.5, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: 0.5 }}
                     >
-                      25:00
+                      90:00
                     </motion.span>
                     <motion.p 
-                      className="text-neutral-400 mt-2"
+                      className="text-neutral-200 mt-2"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.7 }}
+                      style={{ fontSize: '0.765rem' }}
                     >
-                      Focus Session
+                      Deep Work Session
                     </motion.p>
                   </div>
                 </div>
@@ -170,7 +171,7 @@ const FocusTimerSection = () => {
               {/* Timer Controls */}
               <div className="flex justify-center gap-4">
                 <motion.button
-                  className="p-3 rounded-full bg-yellow-500/10 text-yellow-500"
+                  className="p-3 rounded-full bg-blue-500/10 text-blue-500"
                   whileHover={{ scale: 1.1, backgroundColor: 'rgba(234, 179, 8, 0.2)' }}
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -178,7 +179,7 @@ const FocusTimerSection = () => {
                   </svg>
                 </motion.button>
                 <motion.button
-                  className="p-3 rounded-full bg-yellow-500 text-white"
+                  className="p-3 rounded-full bg-blue-500 text-white"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -187,7 +188,7 @@ const FocusTimerSection = () => {
                   </svg>
                 </motion.button>
                 <motion.button
-                  className="p-3 rounded-full bg-yellow-500/10 text-yellow-500"
+                  className="p-3 rounded-full bg-blue-500/10 text-blue-500"
                   whileHover={{ scale: 1.1, backgroundColor: 'rgba(234, 179, 8, 0.2)' }}
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -199,14 +200,14 @@ const FocusTimerSection = () => {
               {/* Session Presets */}
               <div className="mt-8 space-y-3">
                 {[
-                  { name: 'Focus Session', duration: '25:00', active: true },
+                  { name: 'Deep Work Session', duration: '90:00', active: true },
                   { name: 'Short Break', duration: '05:00', active: false },
                   { name: 'Long Break', duration: '15:00', active: false },
                 ].map((preset, index) => (
                   <motion.div
                     key={preset.name}
                     className={`p-3 rounded-lg flex items-center justify-between ${
-                      preset.active ? 'bg-yellow-500/20 text-yellow-500' : 'bg-neutral-700/30 text-neutral-300'
+                      preset.active ? 'bg-blue-500/20 text-blue-200 font-bold' : 'bg-neutral-700/30 text-neutral-300'
                     }`}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}

@@ -7,7 +7,7 @@ import CursorAnimation from '@/components/CursorAnimation';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "LumenFlow - Master Your Day, Your Way. Simply.",
+  title: "illumioFlow - Master Your Day, Your Way. Simply.",
   description: "LumenFlow is where intelligent design meets uncomplicated organization. Tailor every focus session to your unique rhythm, accompanied by hand-picked music that elevates your concentration.",
 };
 
@@ -18,6 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={`${inter.className} bg-neutral-900 text-neutral-100 antialiased`}>
         <ClientLayout>
           <CursorAnimation />

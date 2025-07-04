@@ -5,9 +5,10 @@ import { motion } from 'framer-motion';
 
 interface DrawingAnimationProps {
   className?: string;
+  strokeWidth?: number;
 }
 
-const DrawingAnimation: React.FC<DrawingAnimationProps> = ({ className }) => {
+const DrawingAnimation: React.FC<DrawingAnimationProps> = ({ className, strokeWidth = 308 }) => {
   return (
     <div className={className}>
       <svg
@@ -24,7 +25,7 @@ const DrawingAnimation: React.FC<DrawingAnimationProps> = ({ className }) => {
              C 100,150 150,100 250,100
              Z"
           stroke="rgba(60, 162, 247, 0.3)"
-          strokeWidth="308"
+          strokeWidth={strokeWidth}
           strokeLinecap="round"
           fill="none"
           initial={{ pathLength: 0 }}

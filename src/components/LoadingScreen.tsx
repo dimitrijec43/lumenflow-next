@@ -12,7 +12,7 @@ const LoadingScreen = () => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-900"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -283,6 +283,55 @@ const LoadingScreen = () => {
           />
         </motion.svg>
       </div>
+
+      <motion.div 
+        className="text-center pt-10 relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* Glowing background effect */}
+        <motion.div
+          className="absolute inset-0 bg-blue-500/5 blur-2xl rounded-full"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Quote text with gradient and animation */}
+        <motion.p
+          className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300/70 via-blue-400/70 to-blue-300/70 text-sm font-medium tracking-wide relative"
+          animate={{ 
+            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          style={{ 
+            backgroundSize: '200% auto',
+          }}
+        >
+          "Your <span style={{ color: 'rgba(184, 255, 70, 0.73)', fontWeight: 'bold' }}>focus</span> determines your reality."
+        </motion.p>
+        
+        {/* Attribution with fade in */}
+        {/* <motion.p
+          className="text-blue-400/40 text-xs mt-2 tracking-widest"
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
+          — QUI-GON JINN
+        </motion.p> */}
+      </motion.div>
     </motion.div>
   );
 };
