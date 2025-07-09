@@ -26,7 +26,87 @@ import TaskManagementSection from '@/components/TaskManagementSection';
 import FocusTimerSection from '@/components/FocusTimerSection';
 import soundsScreen from '@/assets/sounds.png';
 
-
+// Add this new component before the Home component
+const DotPattern = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.15]">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ 
+          opacity: 1,
+          scale: [1, 1.02, 1],
+          rotate: [0, 1, 0, -1, 0],
+        }}
+        transition={{ 
+          opacity: { duration: 1 },
+          scale: { 
+            repeat: Infinity,
+            duration: 20,
+            ease: "easeInOut"
+          },
+          rotate: {
+            repeat: Infinity,
+            duration: 30,
+            ease: "easeInOut"
+          }
+        }}
+        className="w-full h-full relative origin-center"
+      >
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <pattern 
+            id="dotPattern" 
+            x="0" 
+            y="0" 
+            width="25" 
+            height="25" 
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(0)"
+          >
+            <circle cx="12.5" cy="12.5" r="1" fill="currentColor" className="text-neutral-300" />
+          </pattern>
+          <rect x="-50%" y="-50%" width="200%" height="200%" fill="url(#dotPattern)" />
+        </svg>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ 
+          opacity: 1,
+          scale: [1.02, 1, 1.02],
+          rotate: [0, -1, 0, 1, 0],
+        }}
+        transition={{ 
+          opacity: { duration: 1 },
+          scale: { 
+            repeat: Infinity,
+            duration: 25,
+            ease: "easeInOut"
+          },
+          rotate: {
+            repeat: Infinity,
+            duration: 35,
+            ease: "easeInOut"
+          }
+        }}
+        className="absolute inset-0 w-full h-full origin-center"
+      >
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <pattern 
+            id="dotPattern2" 
+            x="0" 
+            y="0" 
+            width="35" 
+            height="35" 
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(30)"
+          >
+            <circle cx="17.5" cy="17.5" r="1" fill="currentColor" className="text-neutral-400" />
+          </pattern>
+          <rect x="-50%" y="-50%" width="200%" height="200%" fill="url(#dotPattern2)" />
+        </svg>
+      </motion.div>
+    </div>
+  );
+};
 
 const FeatureCard = ({ title, description, icon }: { title: string; description: string; icon: React.ReactNode }) => (
   <motion.div
@@ -163,6 +243,7 @@ export default function Home() {
           className="fixed inset-0 z-0 pointer-events-none"
         >
           <DrawingAnimation className="absolute inset-0 opacity-20" />
+          <DotPattern />
           
           {/* Animated background gradients */}
           <motion.div 

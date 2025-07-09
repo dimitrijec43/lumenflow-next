@@ -16,19 +16,37 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRinging, setIsRinging] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { scrollY } = useScroll();
+  
   const navBackground = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(23, 23, 23, 0)", "rgba(23, 23, 23, 0.8)"]
+    ["rgba(23, 23, 23, 0)", "rgba(23, 23, 23, 0.85)"]
   );
+  
   const navBorderOpacity = useTransform(
     scrollY,
     [0, 100],
-    [0, 0.1]
+    [0, 0.15]
   );
+
+  const navBlur = useTransform(
+    scrollY,
+    [0, 100],
+    ["blur(0px)", "blur(12px)"]
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Run initial animation only once when component mounts
   useEffect(() => {
@@ -238,15 +256,20 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
     <motion.nav
       style={{
         background: navBackground,
+        backdropFilter: navBlur,
         borderBottom: useTransform(navBorderOpacity, (opacity) => 
           `1px solid rgba(38, 38, 38, ${opacity})`)
       }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        isScrolled ? 'backdrop-saturate-150' : ''
+      }`}
       initial={hasAnimated ? false : { opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto py-2 px-4">
+      <div className={`container mx-auto py-2 px-4 transition-all duration-300 ${
+        isScrolled ? 'py-2' : 'py-3'
+      }`}>
         <div className="flex items-center justify-between h-16">
           <motion.div
             initial={hasAnimated ? false : { opacity: 0, x: -20 }}

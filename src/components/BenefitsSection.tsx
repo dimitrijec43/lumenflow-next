@@ -304,9 +304,9 @@ const BenefitsSection = () => {
                 viewport={{ once: true }}
               >
                 {[
-                  { name: 'Deep Focus Beats', color: 'blue', progress: 75 },
-                  { name: 'Nature Ambience', color: 'green', progress: 50 },
-                  { name: 'White Noise', color: 'purple', progress: 25 }
+                  { name: 'Track #1', color: 'blue', progress: 75 },
+                  { name: 'Track #2', color: 'green', progress: 50 },
+                  { name: 'Track #3', color: 'purple', progress: 25 }
                 ].map((sound, index) => (
                   <motion.div 
                     key={sound.name}

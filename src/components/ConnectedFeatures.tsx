@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { linearGradient } from 'framer-motion/client';
 
@@ -10,33 +10,59 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    title: "Smart Focus Timer",
-    description: "Intelligent timer that adapts to your work patterns",
+    title: "Your Session Timer",
+    description: "Preset and custom session you can adapt to Your work patterns",
     icon: "⏱️"
   },
   {
     title: "Task Management",
-    description: "Organize and prioritize your tasks effectively",
+    description: "Organize and prioritize Your tasks effectively",
     icon: "📋"
   },
   {
     title: "Analytics Dashboard",
-    description: "Track your productivity with detailed insights",
+    description: "Track Your productivity with detailed insights",
     icon: "📊"
   },
   {
     title: "Currated Sounds",
-    description: "Currated sounds to help you focus and relax",
+    description: "Currated sounds to help You focus and relax",
     icon: "🎧"
   }
 ];
 
 const ConnectedFeatures = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const firstIconRef = useRef<HTMLDivElement>(null);
+  const lastIconRef = useRef<HTMLDivElement>(null);
+  const [lineHeight, setLineHeight] = useState(0);
+  const [lineTop, setLineTop] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end end"]
   });
+
+  useEffect(() => {
+    const updateLineDimensions = () => {
+      if (firstIconRef.current && lastIconRef.current) {
+        const firstIconRect = firstIconRef.current.getBoundingClientRect();
+        const lastIconRect = lastIconRef.current.getBoundingClientRect();
+        const containerRect = containerRef.current?.getBoundingClientRect();
+        
+        if (containerRect) {
+          const firstIconTop = firstIconRect.top - containerRect.top + firstIconRect.height / 2;
+          const lastIconBottom = lastIconRect.top - containerRect.top + lastIconRect.height / 2;
+          setLineHeight(lastIconBottom - firstIconTop);
+          setLineTop(firstIconTop);
+        }
+      }
+    };
+
+    updateLineDimensions();
+    window.addEventListener('resize', updateLineDimensions);
+    return () => window.removeEventListener('resize', updateLineDimensions);
+  }, []);
 
   return (
     <div style={{ background: 'rgba(18, 18, 18, 1)'}}>
@@ -54,10 +80,22 @@ const ConnectedFeatures = () => {
 
             <div className="relative" ref={containerRef}>
               {/* Connecting Line */}
-              <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-px bg-blue-500/10" />
+              <div 
+                className="absolute left-1/2 -translate-x-1/2 bg-blue-500/10"
+                style={{ 
+                  top: lineTop,
+                  height: lineHeight,
+                  width: '5px'
+                }}
+              />
               <motion.div 
-                className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-px bg-blue-500/30 origin-top"
-                style={{ scaleY: scrollYProgress }}
+                className="absolute left-1/2 -translate-x-1/2 bg-blue-500/30 origin-top"
+                style={{ 
+                  top: lineTop,
+                  height: lineHeight,
+                  scaleY: scrollYProgress,
+                  width: '1px'
+                }}
               />
 
               {/* Features */}
@@ -128,6 +166,7 @@ const ConnectedFeatures = () => {
 
                     {/* Center Icon */}
                     <motion.div
+                      ref={index === 0 ? firstIconRef : index === features.length - 1 ? lastIconRef : null}
                       className="relative col-start-2"
                       variants={{
                         hidden: { 

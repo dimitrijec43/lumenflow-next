@@ -154,10 +154,10 @@ export default function HowPage() {
             className="absolute inset-0"
             style={{
               backgroundImage: `
-                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
+                linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 2px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 2px)
               `,
-              backgroundSize: '50px 50px'
+              backgroundSize: '15px 15px'
             }}
             animate={{
               backgroundPosition: ['0px 0px', '50px 50px'],
@@ -172,13 +172,15 @@ export default function HowPage() {
 
           {/* Floating Particles */}
           <div className="absolute inset-0">
-            {Array.from({ length: 20 }).map((_, i) => (
+            {Array.from({ length: 80 }).map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 rounded-full bg-white/10"
+                className="absolute rounded-full bg-white/10"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
+                  width: '5px',
+                  height: '5px',
                 }}
                 animate={{
                   y: [0, -100, 0],
@@ -342,7 +344,7 @@ export default function HowPage() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ 
                 opacity: 1,
-                y: ['65vh', 'calc(65vh + 20px)', '65vh'],
+                y: ['35vh', 'calc(65vh + 20px)', '65vh'],
                 x: [-5, 5, -5]
               }}
               transition={{ 
@@ -350,7 +352,7 @@ export default function HowPage() {
                 y: { duration: 11, repeat: Infinity, ease: "easeInOut" },
                 x: { duration: 13, repeat: Infinity, ease: "easeInOut" }
               }}
-              className="absolute bottom-[5%] xs:bottom-[8%] sm:bottom-[10%] md:bottom-[12%] left-[50%] -translate-x-[50%] w-[180px] xs:w-[200px] sm:w-[250px] md:w-64 bg-neutral-800/30 backdrop-blur-lg rounded-2xl p-2 xs:p-3 sm:p-4 border border-neutral-700/30 transform hover:scale-105 transition-transform"
+              className="absolute bottom-[75%] xs:bottom-[8%] sm:bottom-[10%] md:bottom-[12%] left-[50%] -translate-x-[50%] w-[180px] xs:w-[200px] sm:w-[250px] md:w-64 bg-neutral-800/30 backdrop-blur-lg rounded-2xl p-2 xs:p-3 sm:p-4 border border-neutral-700/30 transform hover:scale-105 transition-transform"
             >
               <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center">
@@ -564,7 +566,7 @@ export default function HowPage() {
               {/* Phone Top Notch */}
               <motion.rect
                 x="570"
-                y="370"
+                y="335"
                 width="60"
                 height="6"
                 rx="3"
@@ -642,7 +644,7 @@ export default function HowPage() {
                    Q0,0 100,0"
                 fill="none"
                 stroke="url(#robotHandGradient1)"
-                strokeWidth="5"
+                strokeWidth="0"
                 opacity="0.1"
                 initial={{ scale: 0.95 }}
                 animate={{ 
@@ -709,7 +711,7 @@ export default function HowPage() {
             ].map((orb, i) => (
               <motion.div
                 key={i}
-                className="absolute w-64 h-64 rounded-full"
+                className="absolute w-100 h-100 rounded-full"
                 style={{
                   background: `radial-gradient(circle at center, ${orb.color} 0%, transparent 70%)`,
                   left: orb.x,
@@ -731,7 +733,7 @@ export default function HowPage() {
             ))}
 
             {/* Animated Lines */}
-            <div className="absolute inset-0" style={{ perspective: '1000px' }}>
+            {/* <div className="absolute inset-0" style={{ perspective: '1000px' }}>
               {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
@@ -759,7 +761,7 @@ export default function HowPage() {
                   }}
                 />
               ))}
-            </div>
+            </div> */}
 
             {/* Floating Elements */}
             {[...Array(20)].map((_, i) => (
@@ -767,8 +769,8 @@ export default function HowPage() {
                 key={i}
                 className="absolute"
                 style={{
-                  width: Math.random() * 3 + 1 + 'px',
-                  height: Math.random() * 3 + 1 + 'px',
+                  width: Math.random() * 3 + 10 + 'px',
+                  height: Math.random() * 3 + 10 + 'px',
                   background: `rgba(${
                     [
                       [66, 133, 244],  // Google Blue
@@ -783,7 +785,7 @@ export default function HowPage() {
                 }}
                 animate={{
                   y: [0, -100],
-                  x: [0, Math.random() * 50 - 25],
+                  x: [0, Math.random() * 5 - 2.5],
                   opacity: [0, 1, 0],
                   scale: [0, 1, 0]
                 }}
@@ -857,7 +859,7 @@ export default function HowPage() {
                 {/* Features Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <FeatureCard
-                    title="Use it your way"
+                    title="Use it Your way"
                     description="Pick or set a custom session with customizable and prebuilt breaks, pick or auto-play preselcted sound, slecet and input your tasks, and start your session."
                     icon={
                       <motion.svg
@@ -983,9 +985,9 @@ export default function HowPage() {
                         whileHover={{ scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       >
-                        <h4 className="text-xl font-semibold mb-4 text-green-400">illumioFlow Approach</h4>
-                        <ul className="space-y-3 text-neutral-300">
-                          <li>• Essential features only</li>
+                        <h4 className="text-xl font-bold mb-4 text-green-400">illumioFlow Approach</h4>
+                        <ul className="space-y-3 text-neutral-100">
+                          <li className="font-bold">• Essential features only</li>
                           <li>• Instant productivity</li>
                           <li>• Personalized experience</li>
                           <li>• Flexible focus sessions</li>
