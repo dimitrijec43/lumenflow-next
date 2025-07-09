@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
+import logo from '../assets/logo.png';
 
 interface NotifyModalProps {
   isOpen: boolean;
@@ -41,7 +42,7 @@ const NotifyModal: React.FC<NotifyModalProps> = ({ isOpen, onClose }) => {
         <>
           {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -77,6 +78,18 @@ const NotifyModal: React.FC<NotifyModalProps> = ({ isOpen, onClose }) => {
                 </svg>
               </button>
 
+              <div
+                className="absolute left-4 top-4 w-5 h-5 text-neutral-400 hover:text-white transition-colors"
+                style={{
+                  backgroundImage: `url(${logo.src})`,
+                  backgroundSize: 'contain',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat'
+                }}
+              >
+                
+              </div>
+
               {/* Content */}
               <div className="text-center mb-6">
                 <motion.div
@@ -84,6 +97,7 @@ const NotifyModal: React.FC<NotifyModalProps> = ({ isOpen, onClose }) => {
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", delay: 0.2 }}
                   className="w-16 h-16 bg-blue-500/10 rounded-full mx-auto mb-4 flex items-center justify-center"
+                  
                 >
                   <svg
                     className="w-8 h-8 text-yellow-300"
@@ -278,13 +292,22 @@ const NotifyModal: React.FC<NotifyModalProps> = ({ isOpen, onClose }) => {
 
                 {!isSuccess && (
                   <motion.p
-                    className="text-sm text-neutral-500 text-center"
+                    className="text-sm text-neutral-400 text-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
                   >
-                    We respect your privacy. Unsubscribe at any time.
+                    We respect Your privacy, don't worry we wont send You any unnecessary messages.
+                    <motion.a
+                        className="text-sm text-center px-2 text-neutral-300"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                      >
+                        Privacy Policy
+                    </motion.a>
                   </motion.p>
+                  
                 )}
               </motion.form>
 

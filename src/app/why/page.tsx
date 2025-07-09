@@ -142,7 +142,7 @@ export default function WhyPage() {
               </motion.h1>
 
               <motion.p 
-                className="text-xl md:text-xl text-neutral-100 mb-12 max-w-2xl mx-auto"
+                className="text-xl md:text-2xl text-neutral-100 mb-12 max-w-2xl mx-auto"
                 variants={itemVariants}
               >
                 We believe productivity tools should <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-400" style={{ fontSize: '1.42rem' }}>enhance your workflow,</span> <span className="" style={{ color: 'rgb(250, 111, 111)' }}>not complicate it.</span>

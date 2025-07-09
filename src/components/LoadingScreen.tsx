@@ -26,7 +26,7 @@ const LoadingScreen = () => {
             duration: 0.8,
             ease: [0.34, 1.56, 0.64, 1], // Custom spring-like easing
           }}
-          className="relative w-10 h-10 mt-4 mx-auto mb-5"
+          className="relative w-20 h-20 mt mx-auto mb-5"
         >
           {/* Glow effect */}
           <motion.div
@@ -150,14 +150,14 @@ const LoadingScreen = () => {
           className="text-blue-500"
         >
           {/* Outer ring with gradient */}
-          <motion.circle
+          {/* <motion.circle
             cx="12"
             cy="12"
             r="11"
             className="stroke-blue-400/30"
             strokeWidth="0.5"
             fill="none"
-          />
+          /> */}
 
           {/* Clock face with pulsing animation - Modified to draw clockwise */}
           <motion.path
@@ -306,7 +306,7 @@ const LoadingScreen = () => {
         
         {/* Quote text with gradient and animation */}
         <motion.p
-          className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300/70 via-blue-400/70 to-blue-300/70 text-sm font-medium tracking-wide relative"
+          className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300/70 via-blue-400/70 to-blue-300/70 text-lg px-3 font-medium tracking-wide relative"
           animate={{ 
             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
           }}

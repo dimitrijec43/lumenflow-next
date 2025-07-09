@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
 import CursorAnimation from '@/components/CursorAnimation';
+import CookieConsent from '@/components/CookieConsent';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <ClientLayout>
           <CursorAnimation />
           {children}
+          <CookieConsent />
         </ClientLayout>
       </body>
     </html>
