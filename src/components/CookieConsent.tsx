@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import logo from '../assets/logo.png';
+import Link from 'next/link';
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,9 +41,9 @@ const CookieConsent = () => {
                 <img src={logo.src} alt="logo" className="w-8 h-8" />
                 <p className="text-neutral-300 text-sm">
                   By continuing to browse this site, you agree to our use of cookies and our{' '}
-                  <a href="/privacy" className="text-blue-400 hover:text-blue-300 transition-colors">
+                  <Link href="/privacy" className="text-blue-400 hover:text-blue-300 transition-colors">
                     Privacy Policy
-                  </a>.
+                  </Link>.
                 </p>
               </div>
               <button
