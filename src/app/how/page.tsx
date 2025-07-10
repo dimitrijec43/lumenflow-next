@@ -16,6 +16,8 @@ import deepWork from '@/assets/deep_work.png';
 import inHand from '@/assets/in_hand.png';
 import mockup from '@/assets/mockup.png';
 import mockup2 from '@/assets/mockup2.png';
+import pomodoro from '@/assets/pomodoro.png';
+import custom from '@/assets/custom.png';
 
 // Animation variants
 const containerVariants = {
@@ -216,7 +218,7 @@ export default function HowPage() {
         </motion.div>
 
         {/* Hero Section with Hands Holding Phone */}
-        <section className="fixed bottom-0 left-0 right-0 w-full min-h-[100vh] flex items-end justify-center overflow-hidden pb-0" style={{ marginBottom: '-45px' }}>
+        <section className="fixed bottom-0 left-0 right-0 w-full min-h-[100vh] flex items-end justify-center overflow-hidden pb-0" style={{ marginBottom: '-0px' }}>
           {/* Step Cards */}
           <div className="absolute inset-0 z-10">
             {/* Top Card */}
@@ -352,7 +354,7 @@ export default function HowPage() {
                 y: { duration: 11, repeat: Infinity, ease: "easeInOut" },
                 x: { duration: 13, repeat: Infinity, ease: "easeInOut" }
               }}
-              className="absolute bottom-[75%] xs:bottom-[8%] sm:bottom-[10%] md:bottom-[12%] left-[50%] -translate-x-[50%] w-[180px] xs:w-[200px] sm:w-[250px] md:w-64 bg-neutral-800/30 backdrop-blur-lg rounded-2xl p-2 xs:p-3 sm:p-4 border border-neutral-700/30 transform hover:scale-105 transition-transform"
+              className="absolute bottom-[85%] xs:bottom-[8%] sm:bottom-[80%] md:bottom-[82%] left-[50%] sm:left-[60%] -translate-x-[50%] w-[180px] xs:w-[200px] sm:w-[250px] md:w-64 bg-neutral-800/30 backdrop-blur-lg rounded-2xl p-2 xs:p-3 sm:p-4 border border-neutral-700/30 transform hover:scale-105 transition-transform"
             >
               <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center">
@@ -554,10 +556,7 @@ export default function HowPage() {
                 <div style={{ width: '100%', height: '100%', position: 'relative', borderRadius: '25px', overflow: 'hidden', background: 'rgba(0,0,0,0.2)' }}>
                   <PhoneCarousel 
                     images={[
-                      pixel2.src,
-                      stats.src,
-                      taskMan.src,
-                      deepWork.src
+                      pixel2.src
                     ]}
                   />
                 </div>
@@ -995,6 +994,11 @@ export default function HowPage() {
                         </ul>
                       </motion.div>
                     </div>
+                  </div>
+                  <div className="mt-16 pt-20 relative z-10 flex gap-12 justify-center flex-wrap">
+                    <img src={deepWork.src} alt="illumioFlow" className="w-[150px] sm:w-[200px] h-[52.5px] sm:h-[76.5px] px-5" />
+                    <img src={pomodoro.src} alt="illumioFlow" className="w-[150px] sm:w-[200px] h-[52.5px] sm:h-[76.5px] px-5" />
+                    <img src={custom.src} alt="illumioFlow" className="w-[150px] sm:w-[200px] h-[52.5px] sm:h-[76.5px] px-5" />
                   </div>
 
                   {/* Adding Benefits Section */}

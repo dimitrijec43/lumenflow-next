@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
+import Link from 'next/link';
 
 interface NotifyModalProps {
   isOpen: boolean;
@@ -298,14 +299,12 @@ const NotifyModal: React.FC<NotifyModalProps> = ({ isOpen, onClose }) => {
                     transition={{ delay: 0.6 }}
                   >
                     We respect Your privacy, don't worry we wont send You any unnecessary messages.
-                    <motion.a
-                        className="text-sm text-center px-2 text-neutral-300"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6 }}
-                      >
-                        Privacy Policy
-                    </motion.a>
+                    <Link
+                      href="/privacy"
+                      className="text-sm text-center px-2 text-neutral-300 hover:text-white transition-colors"
+                    >
+                      Privacy Policy
+                    </Link>
                   </motion.p>
                   
                 )}

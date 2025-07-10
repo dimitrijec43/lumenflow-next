@@ -252,6 +252,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
     },
   ];
 
+  // Add this helper function to determine if a link is active
+  const isActivePath = (path: string) => {
+    if (path === '/') {
+      return pathname === path;
+    }
+    return pathname?.startsWith(path);
+  };
+
   return (
     <motion.nav
       style={{
@@ -524,26 +532,73 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="absolute top-full right-0 w-64 bg-neutral-900/95 backdrop-blur-lg border-l border-neutral-800 p-4 rounded-bl-2xl"
+              className="absolute top-full left-0 right-0 bg-neutral-900/95 backdrop-blur-lg border-t border-neutral-800"
             >
-              {menuItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  variants={menuItemVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="block py-3 px-4 text-neutral-300 hover:text-white hover:bg-neutral-800/50 rounded-lg transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+              <div className="px-4 py-2 space-y-1">
+                {menuItems.map((item, index) => {
+                  const isActive = pathname === item.href || 
+                    (item.href !== '/' && pathname?.startsWith(item.href));
+                  
+                  return (
+                    <motion.div
+                      key={item.href}
+                      variants={menuItemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      transition={{ delay: index * 0.1 }}
+                      className="relative"
+                    >
+                      <Link
+                        href={item.href}
+                        className={`block py-3 px-4 text-neutral-300 hover:text-white hover:bg-neutral-800/50 rounded-lg transition-colors relative ${
+                          isActive ? 'text-white' : ''
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeIndicator"
+                            className="absolute inset-0 rounded-xl -z-10"
+                            initial={false}
+                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                          >
+                            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10" />
+                            <motion.div 
+                              className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20"
+                              animate={{
+                                opacity: [0.1, 0.2, 0.1],
+                              }}
+                              transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                              }}
+                            />
+                            <div className="absolute inset-0 rounded-xl border border-neutral-700/50" />
+                          </motion.div>
+                        )}
+                        <div className="flex items-center gap-3 relative z-10">
+                          {isActive ? (
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              className="w-6 h-6 flex items-center justify-center"
+                            >
+                              {item.icon}
+                            </motion.div>
+                          ) : (
+                            <div className="w-6 h-6 flex items-center justify-center opacity-50">
+                              {item.icon}
+                            </div>
+                          )}
+                          <span className={isActive ? 'font-medium' : ''}>{item.label}</span>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
