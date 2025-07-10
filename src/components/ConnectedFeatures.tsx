@@ -73,7 +73,7 @@ const ConnectedFeatures = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, margin: "-100px" }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-16"
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-16 text-transparent bg-clip-text bg-gradient-to-r from-yellow-300/90 via-yellow-300/90 to-blue-300/90"
             >
               How It All Connects
             </motion.h2>
@@ -81,7 +81,7 @@ const ConnectedFeatures = () => {
             <div className="relative" ref={containerRef}>
               {/* Connecting Line */}
               <div 
-                className="absolute left-1/2 -translate-x-1/2 bg-blue-500/10"
+                className="absolute left-1/2 -translate-x-1/2 bg-blue-500/10 rounded-full blur-sm"
                 style={{ 
                   top: lineTop,
                   height: lineHeight,
@@ -89,12 +89,13 @@ const ConnectedFeatures = () => {
                 }}
               />
               <motion.div 
-                className="absolute left-1/2 -translate-x-1/2 bg-blue-500/30 origin-top"
+                className="absolute left-1/2 -translate-x-1/2 bg-blue-400/40 origin-top rounded-full"
                 style={{ 
                   top: lineTop,
                   height: lineHeight,
                   scaleY: scrollYProgress,
-                  width: '1px'
+                  width: '2px',
+                  boxShadow: '0 0 10px rgba(96, 165, 250, 0.3)'
                 }}
               />
 
@@ -109,7 +110,7 @@ const ConnectedFeatures = () => {
                     viewport={{ once: false, margin: "-100px" }}
                     variants={{
                       hidden: { opacity: 0 },
-                      visible: { opacity: 1, transition: { duration: 0.2, staggerChildren: 0.3 } }
+                      visible: { opacity: 1, transition: { duration: 0.2, staggerChildren: 0.2 } }
                     }}
                   >
                     {/* Left side content */}
@@ -118,16 +119,16 @@ const ConnectedFeatures = () => {
                       variants={{
                         hidden: { 
                           opacity: 0, 
-                          x: index % 2 === 0 ? -50 : 50,
-                          y: 20
+                          x: index % 2 === 0 ? -30 : 30,
+                          y: 10
                         },
                         visible: { 
                           opacity: 1, 
                           x: 0,
                           y: 0,
                           transition: {
-                            duration: 1.2,
-                            ease: "easeOut"
+                            duration: 0.8,
+                            ease: [0.34, 1.56, 0.64, 1]
                           }
                         }
                       }}
@@ -135,9 +136,9 @@ const ConnectedFeatures = () => {
                       {index % 2 === 0 && (
                         <>
                           <motion.h3 
-                            className="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-4"
+                            className="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-400"
                             variants={{
-                              hidden: { opacity: 0, y: 20 },
+                              hidden: { opacity: 0, y: 10 },
                               visible: { 
                                 opacity: 1, 
                                 y: 0,
@@ -148,9 +149,9 @@ const ConnectedFeatures = () => {
                             {feature.title}
                           </motion.h3>
                           <motion.p 
-                            className="text-sm md:text-base text-neutral-300"
+                            className="text-sm md:text-base text-neutral-300/80"
                             variants={{
-                              hidden: { opacity: 0, y: 20 },
+                              hidden: { opacity: 0, y: 10 },
                               visible: { 
                                 opacity: 1, 
                                 y: 0,
@@ -172,7 +173,7 @@ const ConnectedFeatures = () => {
                         hidden: { 
                           scale: 0.8,
                           opacity: 0,
-                          y: 20
+                          y: 10
                         },
                         visible: { 
                           scale: 1,
@@ -180,23 +181,28 @@ const ConnectedFeatures = () => {
                           y: 0,
                           transition: {
                             duration: 0.35,
-                            ease: "easeOut"
+                            ease: [0.34, 1.56, 0.64, 1]
                           }
                         }
                       }}
-                      whileHover={{ scale: 1.1 }}
+                      whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <motion.div
-                        className="w-12 h-12 md:w-16 md:h-16 bg-neutral-800/50 rounded-full flex items-center justify-center text-xl md:text-2xl backdrop-blur-lg relative z-10"
+                        className="w-12 h-12 md:w-16 md:h-16 bg-neutral-800/50 rounded-full flex items-center justify-center text-xl md:text-2xl backdrop-blur-lg relative z-10 border border-blue-500/20"
+                        whileHover={{
+                          boxShadow: '0 0 20px rgba(96, 165, 250, 0.2)',
+                          borderColor: 'rgba(96, 165, 250, 0.4)',
+                          transition: { duration: 0.2 }
+                        }}
                       >
                         {feature.icon}
                       </motion.div>
                       <motion.div
-                        className="absolute inset-0 rounded-full bg-blue-500/20"
+                        className="absolute inset-0 rounded-full bg-blue-500/10 blur-sm"
                         animate={{
                           scale: [1, 1.2, 1],
-                          opacity: [0.5, 1, 0.5]
+                          opacity: [0.3, 0.5, 0.3]
                         }}
                         transition={{
                           duration: 1.5,

@@ -132,16 +132,48 @@ const PrivacyPolicy = () => {
             </div>
             </motion.div>
         </div>
-        <footer className="rounded-full shadow-sm m-4 mt-20 border border-neutral-700/30">
-            <div className="w-full mx-auto max-w-screen-xl py-4 px-4 md:px-5 flex items-center justify-between">
-                <span className="text-[12px] sm:text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">LumenFlow™</a>. All Rights Reserved.</span>
-                <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-                <li>
-                    <img src={logo.src} alt="LumenFlow Logo" className="w-5 h-5 sm:w-10 sm:h-10 mb-2 sm:mb-0" />
-                </li>
-                </ul>
-            </div>
-        </footer>
+        <footer className="rounded-3xl shadow-lg m-4 mt-20 border border-neutral-700/30 bg-neutral-800/20 backdrop-blur-sm">
+              <div className="w-full mx-auto max-w-screen-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex flex-col items-center md:items-start gap-2">
+                  <span className="text-sm sm:text-base text-gray-300">© 2025 <a href="/" className="hover:text-blue-400 transition-colors">illumioFlow™</a></span>
+                  <p className="text-gray-400 text-sm">All Rights Reserved.</p>
+                </div>
+                
+                <div className="flex flex-col items-center gap-2">
+                  <p className="text-gray-300 text-sm sm:text-base font-medium">Get in touch with us</p>
+
+                  <div className='border border-neutral-700/30 rounded-full px-5 py-2 flex items-center justify-center'>
+                    <a 
+                      href="mailto:contact@illumioflow.io" 
+                      className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2 group"
+                    >
+                      <svg 
+                        className="w-4 h-4 group-hover:scale-110 transition-transform" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" 
+                        />
+                      </svg>
+                      <span className="text-sm sm:text-base pb-1">contact@illumioflow.io</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-center">
+                  <img 
+                    src={logo.src} 
+                    alt="illumioFlow Logo" 
+                    className="w-8 h-8 sm:w-10 sm:h-10 opacity-80 hover:opacity-100 transition-opacity" 
+                  />
+                </div>
+              </div>
+            </footer>
       </div>
     </div>
   );

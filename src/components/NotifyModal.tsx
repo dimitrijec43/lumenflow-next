@@ -80,7 +80,7 @@ const NotifyModal: React.FC<NotifyModalProps> = ({ isOpen, onClose }) => {
               </button>
 
               <div
-                className="absolute left-4 top-4 w-5 h-5 text-neutral-400 hover:text-white transition-colors"
+                className="absolute left-4 top-4 w-[28.5px] h-[28.5px] text-neutral-400 hover:text-white transition-colors"
                 style={{
                   backgroundImage: `url(${logo.src})`,
                   backgroundSize: 'contain',

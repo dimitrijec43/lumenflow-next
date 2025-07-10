@@ -20,7 +20,7 @@ export default function ClientLayout({
     // Simulate loading time and resources check
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // Show loading screen for 2 seconds
+    }, 1500); // Show loading screen for 2 seconds
 
     return () => clearTimeout(timer);
   }, []);

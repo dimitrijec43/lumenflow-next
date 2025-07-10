@@ -26,7 +26,7 @@ const LoadingScreen = () => {
             duration: 0.8,
             ease: [0.34, 1.56, 0.64, 1], // Custom spring-like easing
           }}
-          className="relative w-20 h-20 mt mx-auto mb-5"
+          className="relative w-[42px] h-[42px] mt mx-auto mb-5"
         >
           {/* Glow effect */}
           <motion.div
