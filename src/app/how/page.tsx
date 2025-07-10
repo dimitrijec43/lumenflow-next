@@ -79,7 +79,7 @@ export default function HowPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-neutral-900 text-neutral-100 relative overflow-hidden">
+      <main className="min-h-screen text-neutral-100 relative overflow-hidden" style={{ backgroundColor: 'rgba(10, 12, 15, 0.82)' }}>
         <DrawingAnimation className="absolute inset-0 opacity-10" />
         
         {/* Animated Background */}

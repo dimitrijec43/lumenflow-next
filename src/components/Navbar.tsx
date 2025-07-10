@@ -24,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNotifyClick }) => {
   const navBackground = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(23, 23, 23, 0)", "rgba(23, 23, 23, 0.85)"]
+    ["rgba(23, 23, 23, 0)", "rgba(14, 15, 17, 0.55)"]
   );
   
   const navBorderOpacity = useTransform(

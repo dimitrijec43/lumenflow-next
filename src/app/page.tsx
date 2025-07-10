@@ -235,7 +235,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="min-h-screen bg-neutral-900 text-neutral-100 relative overflow-hidden">
+      <main className="min-h-screen  text-neutral-100 relative overflow-hidden" style={{ backgroundColor: 'rgb(10, 12, 15)' }}>
         <DrawingAnimation className="absolute inset-0 opacity-10" />
         {/* Fixed Hero Section */}
         <motion.section
