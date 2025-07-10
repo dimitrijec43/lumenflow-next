@@ -234,7 +234,7 @@ export default function HowPage() {
                 y: { duration: 8, repeat: Infinity, ease: "easeInOut" },
                 x: { duration: 10, repeat: Infinity, ease: "easeInOut" }
               }}
-              className="absolute top-[15%] xs:top-[12%] sm:top-[10%] md:top-[15%] left-[50%] -translate-x-[50%] w-[180px] xs:w-[200px] sm:w-[250px] md:w-64 bg-neutral-800/30 backdrop-blur-lg rounded-2xl p-2 xs:p-3 sm:p-4 border border-neutral-700/30 transform hover:scale-105 transition-transform"
+              className="absolute top-[25%] xs:top-[22%] sm:top-[20%] md:top-[15%] left-[50%] -translate-x-[50%] w-[180px] xs:w-[200px] sm:w-[250px] md:w-64 bg-neutral-800/30 backdrop-blur-lg rounded-2xl p-2 xs:p-3 sm:p-4 border border-neutral-700/30 transform hover:scale-105 transition-transform"
             >
               <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
