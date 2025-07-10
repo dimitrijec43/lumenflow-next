@@ -306,7 +306,7 @@ const LoadingScreen = () => {
         
         {/* Quote text with gradient and animation */}
         <motion.p
-          className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300/70 via-blue-400/70 to-blue-300/70 text-lg px-3 font-medium tracking-wide relative"
+          className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200/70 via-blue-200/70 to-blue-300/80 text-lg px-10 sm:px-3 font-medium tracking-wide relative"
           animate={{ 
             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
           }}
@@ -319,7 +319,7 @@ const LoadingScreen = () => {
             backgroundSize: '200% auto',
           }}
         >
-          "Your <span style={{ color: 'rgba(184, 255, 70, 0.73)', fontWeight: 'bold' }}>focus</span> determines your reality."
+          "Your <span style={{ color: 'rgba(184, 255, 70, 0.73)', fontWeight: 'bold', fontSize: '1.35rem' }}>focus</span> determines your <span style={{ color: 'rgba(184, 255, 70, 0.73)', fontWeight: 'bold', fontSize: '1.35rem' }}>reality</span>."
         </motion.p>
         
         {/* Attribution with fade in */}
