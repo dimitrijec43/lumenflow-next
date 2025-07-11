@@ -97,7 +97,7 @@ export default function HowPage() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
             {/* Top left orb */}
-            <motion.div
+            {/* <motion.div
               className="absolute -left-32 -top-32 w-96 h-96 rounded-full"
               style={{
                 background: "radial-gradient(circle at center, rgba(66, 133, 244, 0.15), transparent 70%)"
@@ -112,13 +112,13 @@ export default function HowPage() {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-            />
+            /> */}
 
             {/* Top right orb */}
             <motion.div
-              className="absolute -right-32 -top-32 w-96 h-96 rounded-full"
+              className="absolute  w-96 h-96 rounded-full"
               style={{
-                background: "radial-gradient(circle at center, rgba(52, 168, 83, 0.15), transparent 70%)"
+                background: "radial-gradient(circle at center, rgba(211, 198, 86, 0.85), transparent 70%)"
               }}
               animate={{
                 scale: [1.2, 1, 1.2],
@@ -134,9 +134,9 @@ export default function HowPage() {
 
             {/* Bottom orbs */}
             <motion.div
-              className="absolute -bottom-32 left-1/4 w-96 h-96 rounded-full"
+              className="absolute  left-1/4 w-96 h-96 rounded-full"
               style={{
-                background: "radial-gradient(circle at center, rgba(251, 188, 5, 0.15), transparent 70%)"
+                background: "radial-gradient(circle at center, rgba(56, 199, 255, 0.65), transparent 70%)"
               }}
               animate={{
                 scale: [1, 1.3, 1],
@@ -402,7 +402,7 @@ export default function HowPage() {
             transition={{ duration: 1 }}
           >
             <motion.svg
-              viewBox="0 0 1200 800"
+              viewBox="0 0 1200 1050" //dcvetkov
               className="w-full h-full max-h-[85vh] translate-y-[3%]"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -466,7 +466,7 @@ export default function HowPage() {
                    Z"
                 fill="none"
                 stroke="url(#robotHandGradient1)"
-                strokeWidth="3"
+                strokeWidth="5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 filter="url(#glow)"
@@ -539,7 +539,7 @@ export default function HowPage() {
                 x="458"
                 y="356"
                 width="284"
-                height="500"
+                height="652"
                 rx="32"
                 ry="32"
                 fill="none"
@@ -674,16 +674,16 @@ export default function HowPage() {
                   key={i}
                   className="absolute rounded-full"
                   style={{
-                    width: `${300 + i * 100}px`,
+                    width: `${300 + i * 200}px`,
                     height: `${300 + i * 100}px`,
-                    border: '1px solid rgba(66, 133, 244, 0.1)',
-                    left: '50%',
-                    top: '30%',
+                    border: '650px solid rgba(66, 155, 228, 0.01)',
+                    left: '20%',
+                    top: '10%',
                     transform: 'translate(-50%, -50%)',
                   }}
                   animate={{
                     rotate: [0, 360],
-                    scale: [1, 1.2, 1],
+                    scale: [1, 1.85, 1],
                   }}
                   transition={{
                     rotate: {
@@ -1136,11 +1136,11 @@ export default function HowPage() {
               
             </motion.div>
             <footer className="rounded-3xl shadow-lg m-4 mt-20 border border-neutral-700/30 bg-neutral-800/20 backdrop-blur-sm">
-              <div className="w-full mx-auto max-w-screen-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="flex flex-col items-center md:items-start gap-2">
+              <div className="w-full mx-auto max-w-screen-xl p-6 md:p-8 flex flex-col md:flex-row cols-3 items-center justify-between ">
+                {/* <div className="flex flex-col items-center md:items-start gap-2">
                   <span className="text-sm sm:text-base text-gray-300">© 2025 <a href="/" className="hover:text-blue-400 transition-colors">illumioFlow™</a></span>
                   <p className="text-gray-400 text-sm">All Rights Reserved.</p>
-                </div>
+                </div> */}
                 
                 <div className="flex flex-col items-center gap-2">
                   <p className="text-gray-300 text-sm sm:text-base font-medium">Get in touch with us</p>
@@ -1168,7 +1168,7 @@ export default function HowPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center pt-5 md:pt-0">
                   <Image 
                     src={logo} 
                     alt="illumioFlow Logo" 
@@ -1176,6 +1176,10 @@ export default function HowPage() {
                   />
                 </div>
               </div>
+              <div className="flex flex-row items-center justify-center gap-2 pb-5">
+                  <span className="text-sm sm:text-base text-gray-300">© 2025 <a href="/" className="hover:text-blue-400 transition-colors">illumioFlow™</a></span>
+                  <p className="text-gray-400 text-sm">All Rights Reserved.</p>
+                </div>
             </footer>
           </div>
           

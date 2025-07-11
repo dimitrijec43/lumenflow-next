@@ -133,11 +133,11 @@ const PrivacyPolicy = () => {
             </motion.div>
         </div>
         <footer className="rounded-3xl shadow-lg m-4 mt-20 border border-neutral-700/30 bg-neutral-800/20 backdrop-blur-sm">
-              <div className="w-full mx-auto max-w-screen-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="flex flex-col items-center md:items-start gap-2">
+              <div className="w-full mx-auto max-w-screen-xl p-6 md:p-8 flex flex-col md:flex-row cols-3 items-center justify-between ">
+                {/* <div className="flex flex-col items-center md:items-start gap-2">
                   <span className="text-sm sm:text-base text-gray-300">© 2025 <a href="/" className="hover:text-blue-400 transition-colors">illumioFlow™</a></span>
                   <p className="text-gray-400 text-sm">All Rights Reserved.</p>
-                </div>
+                </div> */}
                 
                 <div className="flex flex-col items-center gap-2">
                   <p className="text-gray-300 text-sm sm:text-base font-medium">Get in touch with us</p>
@@ -165,7 +165,7 @@ const PrivacyPolicy = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center pt-5 md:pt-0">
                   <img 
                     src={logo.src} 
                     alt="illumioFlow Logo" 
@@ -173,6 +173,10 @@ const PrivacyPolicy = () => {
                   />
                 </div>
               </div>
+              <div className="flex flex-row items-center justify-center gap-2 pb-5">
+                  <span className="text-sm sm:text-base text-gray-300">© 2025 <a href="/" className="hover:text-blue-400 transition-colors">illumioFlow™</a></span>
+                  <p className="text-gray-400 text-sm">All Rights Reserved.</p>
+                </div>
             </footer>
       </div>
     </div>
