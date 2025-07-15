@@ -12,9 +12,12 @@ const LoadingScreen = () => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-900"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      style={{
+        background: 'linear-gradient(to right, #000000,rgb(17, 20, 27))',
+      }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <div className="relative text-center">
@@ -305,7 +308,7 @@ const LoadingScreen = () => {
         />
         
         {/* Quote text with gradient and animation */}
-        <motion.p
+        {/* <motion.p
           className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200/70 via-blue-200/70 to-blue-300/80 text-lg px-10 sm:px-3 font-medium tracking-wide relative"
           animate={{ 
             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
@@ -321,7 +324,7 @@ const LoadingScreen = () => {
         >
           "Your <span style={{ color: 'rgba(184, 255, 70, 0.73)', fontWeight: 'bold', fontSize: '1.35rem' }}>focus</span> determines your <span style={{ color: 'rgba(184, 255, 70, 0.73)', fontWeight: 'bold', fontSize: '1.35rem' }}>reality</span>."
         </motion.p>
-        
+         */}
         {/* Attribution with fade in */}
         {/* <motion.p
           className="text-blue-400/40 text-xs mt-2 tracking-widest"
