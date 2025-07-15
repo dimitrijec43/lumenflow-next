@@ -59,7 +59,7 @@ const FeatureCard = ({ icon, title, description, color }: { icon: React.ReactNod
       transition={{ duration: 0.5 }}
     >
       {/* Gradient background */}
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br ${color}`} />
+      <div className={`absolute inset-0 opacity-0 opacity-10 transition-opacity duration-300 bg-gradient-to-br ${color}`} />
       
       {/* Icon container */}
       <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${color} bg-opacity-10 relative`}>

@@ -892,6 +892,8 @@ export default function Home() {
 
           <div className="relative pt-10" style={{ height: '200px', width: '100%', marginTop: '-100px', background: 'linear-gradient(180deg,rgba(18, 18, 18, 0.65),rgb(18, 18, 18))', backdropFilter: 'blur(44px)' }}></div>
 
+
+          
           {/* Connected Features Section */}
           <ConnectedFeatures />
 
