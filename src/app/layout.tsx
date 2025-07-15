@@ -9,7 +9,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "illumioFlow - Master Your Day, Your Way. Simply.",
-  description: "LumenFlow is where intelligent design meets uncomplicated organization. Tailor every focus session to your unique rhythm, accompanied by hand-picked music that elevates your concentration.",
+  description: "illumioFlow is where intelligent design meets uncomplicated organization. Tailor every focus session to your unique rhythm, accompanied by hand-picked music that elevates your concentration.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
